@@ -1,0 +1,25 @@
+@use "sass:math";
+@use "../../basic/setting" as *;
+
+/*-------------------------------------------*/
+/*  main
+/*-------------------------------------------*/
+
+main {
+    
+    // @include pc-tab {
+    //     padding-top: rem(120);
+    // }
+
+    // @include sp {
+    //     padding-top: rem(80);
+    // }
+
+    @include pc-tab {
+        margin-top: rem(120);
+    }
+
+    @include sp {
+        margin-top: rem(80);
+    }
+}

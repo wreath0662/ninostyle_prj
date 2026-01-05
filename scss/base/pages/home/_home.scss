@@ -1,0 +1,1439 @@
+@use "../../basic/setting" as *;
+@use "sass:math";
+
+main {
+
+    &.home {
+        overflow: hidden;
+
+        .mv {
+            @include padding-basic();
+            color: var(--co-wht);
+
+            @include pc {
+                @include clampVwPercent(padding-top, 46, 1440);
+                @include clampVwPercent(padding-bottom, 170, 1440);
+            }
+
+            @include tab {
+                @include clampVwRange(padding-top, 28, 820);
+                @include clampVwRange(padding-bottom, 100, 820);
+            }
+
+            @include sp {
+                // @include clampVwRange(padding-top, 20, 375);
+                padding-top: 10dvh;
+                @include clampVwRange(padding-bottom, 64, 375);
+            }
+
+            &_movie {
+                position: fixed;
+                left: 0;
+                top: 0;
+                z-index: -1;
+                width: 100%;
+                height: 100%;
+                
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 20;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, .6);
+                    content: "";
+                }
+
+                &_contents {
+                    position: absolute;
+                    z-index: 10;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .wrapper {
+                @include wpr(1400);
+            }
+
+            &_logo {
+                @include margin-center();
+
+                @include pc {
+                    width: min(100%, rem(160));
+                }
+
+                @include tab {
+                    width: min(100%, rem(130));
+                }
+
+                @include sp {
+                    width: min(100%, rem(100));
+                }
+            }
+
+            &_scroll {
+                position: relative;
+                width: 100%;
+
+                @include pc {
+                    height: 100vh;
+                    @include clampVwPercent(margin-top, 56, 1440);
+                }
+                
+                @include tab {
+                    height: 60vh;
+                    @include clampVwPercent(margin-top, 32, 820);
+                }
+
+                @include sp {
+                    height: 30vh;
+                    @include clampVwPercent(margin-top, 20, 375);
+                }
+
+                &_block {
+                    display: inline-block;
+                    overflow: hidden;
+                    @include position-center();
+
+                    @include sp {
+                        padding-bottom: rem(6);
+                    }
+
+                    .heading {
+                        position: relative;
+                        font-weight: 500;
+                        text-align: center;
+
+                        @include pc {
+                            @include clampVwPercent(font-size, 74, 1440);
+                        }
+            
+                        @include tab {
+                            @include clampVwRange(font-size, 44, 820);
+                        }
+
+                        @include pc-tab {
+                            line-height: 1.55;
+                        }
+            
+                        @include sp {
+                            @include clampVwRange(font-size, 28, 375);
+                            line-height: 1.5;
+                        }
+                    }
+
+                    .line {
+                        position: absolute;
+                        bottom: 0;
+                        transform: scale(1, 1);
+                        width: 100%;
+                        height: rem(2);
+                        background-color: var(--co-wht);
+                    }
+                }
+
+                & + .mv_block {
+
+                    @include sp {
+                        padding-top: 45dvh;
+                    }
+                }
+            }
+
+
+            &_block {
+                @include pc {
+                    width: 50%;
+                    @include clampVwPercent(padding-top, 250, 1440);
+                }
+
+                @include tab {
+                    width: 65%;
+                    @include clampVwRange(padding-top, 120, 820);
+                }
+
+                @include pc-tab {
+                    margin-left: auto;
+                }
+
+                // @include sp {
+                //     @include clampVwRange(padding-top, 72, 375);
+                // }
+
+                &:last-of-type {
+                    
+                    @include pc {
+                        padding-bottom: 60vh;
+                    }
+
+                    @include tab {  
+                        padding-bottom: 40vh;
+                    }
+
+                    @include sp {
+                        @include clampVwRange(padding-top, 72, 375);
+                        padding-bottom: 20vh;
+                    }
+                }
+
+                &_heading {
+
+                    @include pc {
+                        @include clampVwPercent(font-size, 40, 1440);
+                    }
+
+                    @include tab {
+                        @include clampVwRange(font-size, 32, 820);
+                    }
+
+                    @include pc-tab {
+                        line-height: 1.7;
+                    }
+
+                    @include sp {
+                        @include clampVwRange(font-size, 22, 375);
+                        line-height: 1.45;
+                    }
+                }
+            }
+        }
+
+        .lineup,
+        .common,
+        .blog,
+        .news {
+            background-color: var(--co-wht);
+        }
+
+        .lineup {
+            // @include padding-basic();
+
+            @include pc {
+                @include clampVwPercent(padding-top, 78, 1440);
+            }
+
+            @include tab {
+                @include clampVwPercent(padding-top, 48, 820);
+            }
+
+            @include sp {
+                @include clampVwPercent(padding-top, 36, 375);
+            }
+
+            .wrapper {
+                @include padding-basic();
+            }
+            
+            &_block {
+                display: flex;
+                @include wpr(1400);
+
+                @include sp {
+                    flex-direction: column;
+                    row-gap: clampVw(20, 24, 30, 375);
+                }
+
+                .heading {
+                    
+                    @include pc-tab {
+                        width: 50%;
+                    }
+                }
+            }
+
+            &_unit {
+
+                display: flex;
+                flex-wrap: wrap;
+
+                @include pc {
+                    @include clampVwPercent(margin-top, 60, 1440);
+                }
+    
+                @include tab {
+                    @include clampVwPercent(margin-top, 36, 820);
+                }
+    
+                @include sp {
+                    @include clampVwPercent(margin-top, 32, 375);
+                }
+
+                &_panel {
+                    position: relative;
+                    
+                    @include pc {
+                        width: 50%;
+
+                        &:hover {
+
+                            .front {
+                                opacity: 0;
+                                visibility: hidden;
+                            }
+
+                            .back {
+                                opacity: 1;
+                                visibility: visible;
+                            }
+
+                            .picture {
+    
+                                img {
+                                    filter: grayscale(0%);
+                                }
+                            }
+                        }
+                    }
+
+                    @include sp {
+                        width: 100%;
+                    }
+
+                    .front {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: 30;
+                        width: 100%;
+                        height: 100%;
+                        
+                        @include pc {
+                            opacity: 1;
+                            visibility: visible;
+                            transition: var(--trs-vbt), var(--trs-opc);
+                        }
+
+                        &_subheading,
+                        &_deco {
+                            text-align: center;
+                        }
+
+                        &_subheading {
+                            color: var(--co-wht);
+
+                            @include pc {
+                                font-size: clampVw((48 * .7), 48, 48, 1440);
+                            }
+
+                            @include tab {
+                                @include clampVwRange(font-size, 32, 820);
+                            }
+
+                            @include sp {
+                                @include clampVwRange(font-size, 24, 375);
+                            }
+                        }
+
+                        &_deco {
+                            color: var(--co-wht);
+
+                            @include pc {
+                                font-size: clampVw((28 * .7), 28, 28, 1440);
+                            }
+
+                            @include tab {
+                                @include clampVwRange(font-size, 24, 820);
+                            }
+
+                            @include pc-tab {
+                                margin-top: rem(12);
+                            }
+
+                            @include sp {
+                                margin-top: rem(10);
+                                @include clampVwRange(font-size, 16, 375);
+                            }
+                        }
+
+                        &_btn {
+                            text-align: center;
+
+                            @include pc {
+                                display: none;
+                            }
+
+                            @include tab {
+                                @include clampVwRange(margin-top, 16, 820);
+                            }
+
+                            @include sp {
+                                width: min(100%, rem(280));
+                                margin-top: clampVw((26 * .7), 26, 26, 1440);
+                                @include margin-center();
+                            }
+                            
+                            .link {
+                                
+                                @include tab-sp {
+                                    display: inline-flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    position: relative;
+                                    padding-top: rem(10);
+                                    padding-bottom: rem(10);
+                                    border-color: var(--co-gray-hv);
+                                    border-style: solid;
+                                    border-width: rem(1);
+                                    border-radius: rem(68);
+                                    background-color: var(--co-wht);
+                                    text-align: center;
+                                    color: var(--co-wht);
+                                    transition: var(--trs-bgc);
+                                }
+                                
+                                @include tab {
+                                    width: min(100%, rem(400));
+                                }
+                                
+                                @include sp {
+                                    width: min(100%, rem(320));
+                                }
+                                
+                                &_text {
+                                    
+                                    @include tab-sp {
+                                        color: var(--co-gray-hv);
+                                        font-weight: 500;
+                                        transition: var(--trs-col);
+                                    }
+                                    
+                                    @include pc-tab {
+                                        font-size: clampVw(16, 18, 20, 820);
+                                        line-height: 2.4;
+                                    }
+                        
+                                    @include sp {
+                                        font-size: clampVw(12, 13, 13, 375);
+                                        line-height: 1.75;
+                                    }
+                                }
+                        
+                                &_image {
+                                    
+                                    @include tab-sp {
+                                        display: inline-flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        position: absolute;
+                                        right: rem(16);
+                                        aspect-ratio: 1/1;
+                                        background-color: var(--co-gray-dr);
+                                        border-style: solid;
+                                        border-width: rem(1);
+                                        border-color: var(--co-wht);
+                                        border-radius: rem(54);
+                                        transition: var(--trs-bgc);
+                                    }
+                        
+                                    @include tab {
+                                        width: min(100%, rem(40));
+                                    }
+                        
+                                    @include sp {
+                                        width: min(100%, rem(32));
+                                    }
+                        
+                                    img {
+                                        
+                                        @include tab-sp {
+                                            width: rem(12);
+                                            height: rem(12);
+                                            transition: var(--trs-ftr);
+                                            filter: invert(96%) sepia(1%) saturate(6%) hue-rotate(351deg) brightness(117%) contrast(100%);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .picture {
+
+                        img {
+
+                            @include pc {
+                                filter: grayscale(100%);
+                                transition: filter ease .5s;
+                            }
+                        }
+                    }
+
+                    .back {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: 30;
+                        width: 100%;
+                        height: 100%;
+                        
+                        @include pc {
+                            opacity: 0;
+                            visibility: hidden;
+                            transition: var(--trs-vbt), var(--trs-opc);
+                        }
+
+                        @include tab-sp {
+                            display: none;
+                        }
+
+                        @include sp {
+                            @include clampVwRange(padding, 16, 375);
+                        }
+
+                        &_deco,
+                        &_subheading,
+                        &_btn {
+                            letter-spacing: 0.1em;
+                            text-align: center;
+                        }
+
+                        &_subheading {
+                            color: var(--co-wht);
+
+                            @include pc {
+                                font-size: clampVw((28 * .7), 28, 28, 1440);
+                            }
+
+                            @include tab {
+                                @include clampVwRange(font-size, 24, 820);
+                            }
+
+                            @include pc-tab {
+                                line-height: 1.5;
+                            }
+
+                            @include sp {
+                                @include clampVwRange(font-size, 20, 375);
+                                line-height: 1.35;
+                            }
+                        }
+
+                        &_btn {
+                            text-align: center;
+
+                            @include pc {
+                                margin-top: clampVw((26 * .7), 26, 26, 1440);
+                            }
+
+                            @include tab {
+                                @include clampVwRange(margin-top, 16, 820);
+                            }
+
+                            @include sp {
+                                width: min(100%, rem(280));
+                                margin-top: clampVw((26 * .7), 26, 26, 1440);
+                                @include margin-center();
+                            }
+                            
+                            .link {
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
+                                position: relative;
+                                padding-top: rem(10);
+                                padding-bottom: rem(10);
+                                border-color: var(--co-gray-hv);
+                                border-style: solid;
+                                border-width: rem(1);
+                                border-radius: rem(68);
+                                background-color: var(--co-wht);
+                                text-align: center;
+                                color: var(--co-wht);
+                                transition: var(--trs-bgc);
+                                
+                                @include pc {
+                                    // border-color: var(--co-wht);
+                                    width: min(100%, rem(460));
+                                }
+                                
+                                @include tab-sp {
+                                }
+                                
+                                @include tab {
+                                    width: min(100%, rem(400));
+                                }
+                                
+                                @include sp {
+                                    width: min(100%, rem(320));
+                                }
+                                
+                                &_text {
+                                    color: var(--co-gray-hv);
+                                    font-weight: 500;
+                                    transition: var(--trs-col);
+                                    
+                                    @include pc-tab {
+                                        font-size: clampVw(16, 18, 20, 820);
+                                        line-height: 2.4;
+                                    }
+                        
+                                    @include sp {
+                                        font-size: clampVw(12, 13, 13, 375);
+                                        line-height: 1.75;
+                                    }
+                                }
+                        
+                                &_image {
+                                    display: inline-flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    position: absolute;
+                                    right: rem(16);
+                                    aspect-ratio: 1/1;
+                                    background-color: var(--co-gray-dr);
+                                    border-style: solid;
+                                    border-width: rem(1);
+                                    border-color: var(--co-wht);
+                                    border-radius: rem(54);
+                                    transition: var(--trs-bgc);
+                        
+                                    @include pc {
+                                        width: min(100%, rem(54));
+                                    }
+                        
+                                    @include tab {
+                                        width: min(100%, rem(40));
+                                    }
+                        
+                                    @include sp {
+                                        width: min(100%, rem(32));
+                                    }
+                        
+                                    img {
+                                        width: rem(12);
+                                        height: rem(12);
+                                        transition: var(--trs-ftr);
+                                        filter: invert(96%) sepia(1%) saturate(6%) hue-rotate(351deg) brightness(117%) contrast(100%);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .btn_shop {
+                
+                @include pc {
+                    width: 50%;
+                }
+
+                @include tab {
+                    width: 45%;
+                    margin-left: auto;
+                }
+
+                @include sp {
+                    width: min(100%, rem(280));
+                    @include margin-center();
+                }
+
+                &-wht {
+                    text-align: right;
+
+                    // @include pc {
+                    //     margin-left: min(pct(60, 700), rem(60));
+                    // }
+
+                    .link {
+
+                        &_text {
+                            @include tab {
+                                font-size: clampVw(14, 16, 18, 820);
+                            }
+                        }
+
+                        &_image {
+
+                            @include tab {
+                                width: rem(32);
+                            }
+
+                            img {
+                                @include tab {
+                                    width: rem(10);
+                                    height: rem(10);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .common {
+            @include padding-basic();
+
+            @include pc {
+                @include clampVwPercent(padding-top, 188, 1440);
+            }
+
+            @include tab {
+                @include clampVwRange(padding-top, 90, 820);
+            }
+
+            @include sp {
+                @include clampVwRange(padding-top, 48, 375);
+            }
+
+            &.prologue {
+                position: relative;
+
+                .common {
+
+                    &_image {
+                
+                        @include pc {
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            width: min(pct(824, 1780), rem(824));
+                        }
+        
+                        &_picture {
+        
+                            &:nth-of-type(1) {
+                                position: relative;
+                                z-index: 20;
+        
+                                @include pc {
+                                    width: min(pct(488, 824), rem(488));
+                                }
+        
+                                @include tab {
+                                    width: 40%;
+                                    margin-left: clampVw(12, 24, 24, 820);
+                                }
+        
+                                @include sp {
+                                    width: 45%;
+                                }
+                            }
+        
+                            &:nth-of-type(2) {
+        
+                                margin-left: auto;
+        
+                                @include pc {
+                                    margin-top: min(pct(-90, 824), rem(-90));
+                                    width: min(pct(638, 824), rem(638));
+                                }
+        
+                                @include tab {
+                                    width: 60%;
+                                    margin-top: clampVw(-200, -100, (-100 * .5), 820);
+                                    margin-right: clampVw(12, 24, 24, 820);
+                                }
+        
+                                @include sp {
+                                    width: 65%;
+                                    margin-top: clampVw(-60, -60, (-60 * .5), 375);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .btn_shop-wht {
+
+                    @include sp {
+                        text-align: center;
+                    }
+
+                    .link {
+                        justify-content: flex-start;
+                        
+                        @include pc {
+                            padding-left: pct(56, 460);
+                            padding-right: pct(56, 460);
+                            width: min(100%, rem(510));
+                        } 
+
+                        @include tab {
+                            padding-left: pct(30, 400);
+                            padding-right: pct(30, 400);
+                            width: clampVw(420, 420, 460, 820);
+                        }
+
+                        @include sp {
+                            width: min(100%, rem(280));
+                            @include margin-center();
+                            padding-left: clampVw(16, 20, 20, 375);
+                            padding-right: clampVw(16, 20, 20, 375);
+                        }
+                    }
+                }
+            }
+
+            &.semi-order {
+
+                .btn_shop-wht {
+
+                    @include sp {
+                        text-align: center;
+                    }
+
+                    .link {
+
+                        @include tab {
+                            padding-left: pct(30, 400);
+                            padding-right: pct(30, 400);
+                            width: clampVw(420, 420, 460, 820);
+                        }
+
+                        @include sp {
+                            width: min(100%, rem(280));
+                            @include margin-center();
+                            padding-left: clampVw(16, 20, 20, 375);
+                            padding-right: clampVw(16, 20, 20, 375);
+                        }
+                    }
+                }
+            }
+
+            .wrapper {
+
+                display: grid;
+                align-items: center;
+                
+                @include pc {
+                    grid-template-columns: repeat(2, 1fr);
+                    column-gap: pct(100, 1400);
+                    @include wpr(1400);
+                }
+            }
+
+            .heading {
+
+                @include pc {
+                    grid-column: 1/2;
+                    grid-row: 1/2;
+                }
+
+                @include tab-sp {
+                    grid-row: 1/2;
+                }
+
+                .subheading {
+                    font-weight: 600;
+
+                    @include pc {
+                        @include clampVwPercent(margin-top, 70, 1440);
+                        @include clampVwPercent(font-size, 48, 1440);
+                    }
+
+                    @include tab {
+                        @include clampVwRange(margin-top, 48, 820);
+                        @include clampVwRange(font-size, 28, 820);
+                    }
+
+                    @include sp {
+                        @include clampVwRange(margin-top, 48, 820);
+                        @include clampVwRange(font-size, 28, 820);
+                    }
+                }
+            }
+
+            // 20240403 追加
+            
+            .textarea {
+                
+                @include pc {
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                }
+
+                @include tab-sp {
+                    grid-row: 3/4;
+                }
+
+                .util_text-blc {
+
+                    &:first-of-type {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 36, 1440);
+                        }
+    
+                        @include tab {
+                            @include clampVwRange(margin-top, 24, 820);
+                        }
+    
+                        @include sp {
+                            @include clampVwRange(margin-top, 22, 375);
+                        }
+                    }
+    
+                    &:not(:first-of-type) {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 64, 1440);
+                        }
+    
+                        @include tab {
+                            @include clampVwRange(margin-top, 36, 820);
+                        }
+    
+                        @include sp {
+                            @include clampVwRange(margin-top, 22, 375);
+                        }
+                    }
+                }
+            }
+
+            .btn_shop-wht {
+
+                @include pc {
+                    grid-column: 1/2;
+                    grid-row: 3/4;
+                }
+
+                @include tab-sp {
+                    grid-row: 4/5;
+                }
+            }
+
+            .btn_shop-wht {
+                @include pc {
+                    @include clampVwPercent(margin-top, 52, 1440);
+                }
+
+                @include tab {
+                    @include clampVwRange(margin-top, 36, 820);
+                }
+
+                @include sp {
+                    @include clampVwRange(margin-top, 24, 375);
+                }
+            }
+
+            &_image {
+                
+                @include pc {
+                    grid-column: 2/3;
+                    grid-row: 1/4;
+                }
+
+                @include tab-sp {
+                    grid-row: 2/3;
+                }
+
+                @include tab {
+                    @include clampVwRange(margin-top, 48, 820);
+                }
+
+                @include sp {
+                    @include clampVwRange(margin-top, 28, 375);
+                }
+
+                &_picture {
+
+                    img {
+                        @include tab-sp {
+                            aspect-ratio: 724/430;
+                        }
+                    }
+                }
+            }
+        }
+
+        .blog {
+            overflow: hidden;
+
+            @include pc {
+                @include clampVwPercent(padding-top, 188, 1440);
+            }
+
+            @include tab {
+                @include clampVwRange(padding-top, 90, 820);
+            }
+
+            @include sp {
+                @include clampVwRange(padding-top, 48, 375);
+            }
+
+            &_block {
+                display: flex;
+                @include padding-basic();
+                
+                @include pc {
+                    max-width: calc(rem(1400) + (clampVw(48, 96, 96, 1920) * 2));
+                    @include margin-center();
+                }
+                
+                @include pc-tab {
+                    align-items: center;
+                }
+
+                @include sp {
+                    flex-direction: column;
+                    row-gap: clampVw(20, 24, 30, 375);
+                }
+
+                .heading {
+                    @include pc-tab {
+                        width: 50%;
+                    }
+                }
+
+                .btn_shop {
+
+                    @include pc {
+                        width: 50%;
+                    }
+
+                    @include tab {
+                        width: 45%;
+                        margin-left: auto;
+                    }
+
+                    @include sp {
+                        width: min(100%, rem(280));
+                        @include margin-center();
+                    }
+                    
+                    &-wht {
+                        text-align: right;
+
+                        .link {
+
+                            &_text {
+                                @include tab {
+                                    font-size: clampVw(14, 16, 18, 820);
+                                }
+                            }
+    
+                            &_image {
+    
+                                @include tab {
+                                    width: rem(32);
+                                }
+    
+                                img {
+                                    @include tab {
+                                        width: rem(10);
+                                        height: rem(10);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &_swiper {
+                @include position-center();
+
+                @include pc {
+                    width: pct(2084, 1920);
+                    @include clampVwPercent(margin-top, 32, 1440);
+                }
+
+                @include tab {
+                    width: pct(1290, 820);
+                    @include clampVwRange(margin-top, 24, 820);
+                }
+
+                @include sp {
+                    width: pct(1024, 375);
+                    @include clampVwRange(margin-top, 32, 375);
+                }
+
+                .swiper {
+
+                    &-wrapper {
+
+                        @include pc-tab {
+                            column-gap: clampVw(10, 14, 14, 1440);
+                        }
+
+                        @include sp {
+                            column-gap: clampVw(8, 10, 10, 375);
+                        }
+                    }
+
+                    &-slide {
+
+                        @include pc {
+                            width: pct(508, 2084);
+                        }
+
+                        @include tab {
+                            width: pct(380, 1290);
+                        }
+
+                        @include sp {
+                            width: pct(180, 1024);
+                        }
+
+
+                        &-link {
+                            display: block;
+                            height: 100%;
+
+                            .article {
+                                height: 100%;
+
+                                &_image {
+
+                                    img {
+                                        aspect-ratio: 508/513;
+                                    }
+                                }
+
+                                &_panel {
+                                    width: 100%;
+                                    position: absolute;
+                                    bottom: 0;
+                                    z-index: 20;
+                                    // background-color: var(--co-blc);
+        
+                                    @include pc {
+                                        @include clampVwPercent(padding, 30, 1440);
+                                    }
+
+                                    @include tab {
+                                        @include clampVwPercent(padding, 24, 820);
+                                    }
+
+                                    @include sp {
+                                        padding: clampVw(10, 14, 14, 375);
+                                    }
+        
+                                    &_time,
+                                    &_heading {
+                                        color: var(--co-wht);
+        
+                                        @include pc {
+                                            @include clampVwPercent(font-size, 24, 1440);
+                                        }
+
+                                        @include tab {
+                                            @include clampVwRange(font-size, 18, 820);
+                                        }
+
+                                        @include tab {
+                                            @include clampVwPercent(font-size, 18, 375);
+                                        }
+                                    }
+        
+                                    &_time {
+                                        font-weight: 600;
+                                        letter-spacing: 0.1em;
+                                    }
+        
+                                    &_heading {
+                                        font-weight: 700;
+                                        letter-spacing: 0.15em;
+
+                                        @include pc {
+                                            min-height: clampVw(48, 84, 84, 1440);
+                                        }
+
+                                        @include tab {
+                                            @include clampVwRange(margin-top, 12, 820);
+                                            @include clampVwRange(min-height, 64, 820);
+                                        }
+        
+                                        @include pc-tab {
+                                            line-height: 1.75;
+                                        }
+        
+                                        @include sp {
+                                            @include clampVwPercent(min-height, 30, 375);
+                                            line-height: 1.5;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .news {
+            overflow: hidden;
+            @include pc {
+                @include clampVwPercent(padding-bottom, 258, 1440);
+            }
+
+            @include tab {
+                @include clampVwPercent(padding-bottom, 160, 820);
+            }
+        
+            @include sp {
+                @include clampVwPercent(padding-bottom, 90, 820);
+            }
+
+            .deco {
+
+                // .swiper {
+
+                //     &-wrapper {
+                //         transition-timing-function: linear;
+                //     }
+                // }
+
+                &-text {
+                    display: inline-block;
+                    height: auto;
+                    color: var(--co-gray-li);
+                    // animation-timing-function: linear;
+                    animation: slide-infinite 15s linear infinite;
+
+                    @include pc {
+                        font-size: clampVw(163, 260, 260, 1680);
+                    }
+
+                    @include tab {
+                        font-size: clampVw((120 * .7), 120, 120, 820);
+                    }
+
+                    @include sp {
+                        font-size: clampVw((56 * .7), 56, 56, 375);
+                    }
+                }
+                
+            }
+
+            .wrapper {
+
+                @include wpr(1400);
+                @include pc {
+                    width: 90%;
+                }
+                
+                @include tab {
+                    padding-right: clampVw(24, 48, 48, 820);
+                    padding-left: clampVw(24, 48, 48, 820);
+                }
+            
+                @include sp {
+                    padding-right: clampVw(16, 20, 20, 375);
+                    padding-left: clampVw(16, 20, 20, 375);
+                }
+            }
+
+            &_block {
+                display: flex;
+
+                @include sp {
+                    flex-direction: column;
+                }
+
+                .heading {
+                    
+                    @include pc-tab {
+                        width: 50%;
+                    }
+                }
+
+                .btn_shop {
+
+                    @include pc {
+                        width: 50%;
+                    }
+
+                    @include tab {
+                        width: 45%;
+                        margin-left: auto;
+                    }
+
+                    @include sp {
+                        width: min(100%, rem(280));
+                        margin-top: clampVw((26 * .7), 26, 26, 1440);
+                        @include margin-center();
+                    }
+                    
+                    &-wht {
+                        text-align: right;
+
+                        .link {
+
+                            &_text {
+                                @include tab {
+                                    font-size: clampVw(14, 16, 18, 820);
+                                }
+                            }
+    
+                            &_image {
+    
+                                @include tab {
+                                    width: rem(32);
+                                }
+    
+                                img {
+                                    @include tab {
+                                        width: rem(10);
+                                        height: rem(10);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &_list {
+                &_article {
+                    border-bottom-style: solid;
+                    border-bottom-width: rem(1);
+                    border-bottom-color: var(--co-gray-dr-th);
+    
+                   .link {
+                        display: block;
+                        transition: var(--trs-opc);
+    
+                        @include pc {
+                            padding-top: clampVw(34, 42, 42, 1440);
+                            padding-bottom: rem(14);
+                        }
+    
+                        @include tab {
+                            @include clampVwRange(padding-top, 28, 820);
+                            padding-bottom: rem(12);
+                        }
+    
+                        @include sp {
+                            @include clampVwRange(padding-top, 18, 375);
+                            padding-bottom: rem(10);
+                        }
+    
+                        &:hover {
+                            opacity: .4;
+                        }
+    
+                        &_unit {
+                            display: flex;
+                            position: relative;
+                            
+                            @include pc {
+                                column-gap: clampVw(48, 56, 56, 1440);
+                            }
+                            
+                            @include tab {
+                                @include clampVwRange(column-gap, 32, 820);
+                            }
+                            
+                            @include pc-tab {
+                                align-items: center;
+                            }
+    
+                            @include sp {
+                                flex-direction: column;
+                                align-items: flex-start;
+                                row-gap: clampVw(10, 12, 12, 375);
+                            }
+    
+                            // &:hover {
+                            //     &::after {
+                            //         right: 2%;
+                            //     }
+                            // }
+    
+                            // &::after {
+                            //     display: inline-block;
+                            //     position: absolute;
+                            //     right: 3%;
+                            //     background-image: url(#{$co-path} + 'icon-arw-dbl-rgt-blc.svg');
+                            //     @include bg-no-repeat-center();
+                            //     background-size: contain;
+                            //     width: rem(12);
+                            //     aspect-ratio: 1/1;
+                            //     content: "";
+                            //     transition: var(--trs-rgt);
+    
+                            //     @include sp {
+                            //         top: 50%;
+                            //         transform: translateY(-50%);
+                            //     }
+                            // }
+    
+                            &_time {
+                                display: inline-block;
+                                position: relative;
+                                // background-color: var(--co-gray-dr);
+                                // color: var(--co-wht);
+                                font-weight: 500;
+    
+                                @include pc {
+                                    margin-right: clampVw(20, 28, 28, 1440);
+                                    padding: rem(11) clampVw(24, 32, 32, 1440);
+                                    font-size: clampVw(16, 20, 20, 1440);
+                                }
+    
+                                @include tab {
+                                    @include clampVwRange(margin-right, 20, 820);
+                                    padding: rem(8) clampVw(16, 24, 24, 820);
+                                    font-size: rem(18);
+                                }
+    
+                                @include sp {
+                                    // padding: rem(5) clampVw(12, 16, 16, 375);
+                                    font-size: clampVw(14, 14, 16, 375);
+                                }
+    
+                                &::after {
+                                    
+                                    @include pc-tab {
+                                        display: inline-block;
+                                        position: absolute;
+                                        top: 0;
+                                        width: rem(1);
+                                        height: 100%;
+                                        background-color: var(--co-gray-dr);
+                                        content: "";
+                                    } 
+                                    
+                                    @include pc {
+                                        right: clampVw(-28, -28, -20, 1440);
+                                    }
+    
+                                    @include tab {
+                                        right: clampVw((-20 * 1.2), -20, (-20 * .8), 820);
+                                    }
+    
+                                    @include sp {
+                                        content: none;
+                                    }
+                                }
+                            }
+    
+                            &_heading {
+
+                                font-weight: 600;
+
+                                @include pc {
+                                    font-size: clampVw(16, 20, 20, 1440);
+                                }
+    
+                                @include tab {
+                                    // width: 60%;
+                                    font-size: rem(18);
+                                }
+
+                                @include pc-tab {
+                                    line-height: 1.5;
+                                }
+    
+                                @include sp {
+                                    width: 87%;
+                                    font-size: clampVw(14, 14, 16, 375);
+                                    line-height: 1.35;
+                                }
+                            }
+                        }
+                   } 
+                }
+            }
+        }
+    }
+}

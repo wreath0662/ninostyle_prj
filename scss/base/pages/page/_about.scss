@@ -1,0 +1,169 @@
+@use "sass:math";
+@use "../../basic/setting" as *;
+
+main.about {
+    .about {
+        padding-top: clampVw((150 * .7), 150, 150, 1440);
+        padding-bottom: clampVw((137 * .7), 137, 137, 1440);
+        @include tab {
+            padding-top: clampVw((96 * .7), 96, 96, 820);
+            padding-bottom: clampVw((100 * .7), 100, 100, 820);
+        }
+        @include sp {
+            @include clampVwRange(padding-top, 48, 375);
+            @include clampVwRange(padding-bottom, 70, 375);
+        }
+
+        .about_inner {
+            width: min(90%, rem(1400));
+            @include margin-center;
+            @include sp {
+                width: 92%;
+            }
+
+            &_content {
+                width: min(90%, rem(1065));
+                @include margin-center;
+                @include tab {
+                    width: 92%;
+                }
+                @include sp {
+                    width: 94%;
+                }
+
+                &:first-of-type {
+                    margin-top: clampVw((80 *.7), 80, 80, 1440);
+                }
+
+                &:not(:first-of-type) {
+                    margin-top: clampVw((80 *.7), 80, 80, 1440);
+                    @include sp {
+                        @include clampVwRange(margin-top, 40, 375)
+                    }
+                }
+
+                &_image {
+                    position: relative;
+
+                    .lead {
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        background-color: #1A1A1A;
+                        opacity: .8;
+                        padding-top: clampVw(40, 50, 50, 1440);
+                        padding-bottom: clampVw(40, 50, 50, 1440);
+                        padding-left: clampVw(24, 30, 30, 1440);
+                        width: clampVw(270, 340, 340, 1440);
+                        @include tab {
+                            width: clampVw(225, 270, 300, 820);
+                            padding-top: clampVw(28, 40, 40, 1024);
+                            padding-bottom: clampVw(28, 40, 40, 1024);
+                            padding-left: clampVw(20, 24, 24, 1024);
+                        }
+                        @include sp {
+                            width: clampVw(180, 180, 240, 375);
+                            padding-top: clampVw(16, 16, 28, 375);
+                            padding-bottom: clampVw(16, 16, 28, 375);
+                            padding-left: clampVw(12, 12, 20, 375);
+                        }
+
+                        p {
+                           color: #fff; 
+                           font-weight: 500;
+                           line-height: 1;
+                           letter-spacing: .1em
+                        }
+                        
+                        &_title-en {
+                            @include clampVwPercent(font-size, 35, 1440);
+                            @include tab {
+                                @include clampVwPercent(font-size, 28, 820);
+                            }
+                            @include sp {
+                                font-size:  clampVw(18, 18, 24, 375);
+                            }
+                        }
+                        
+                        &_title-jp {
+                            @include clampVwPercent(font-size, 28, 1440);
+                            margin-top: rem(20);
+                            @include tab {
+                                margin-top: rem(15);
+                                @include clampVwPercent(font-size, 24, 820);
+                            }
+                            @include sp {
+                                margin-top: rem(10);
+                                font-size: clampVw(16, 16, 20, 375);
+                            }
+                        }
+                    }
+                }
+
+                &_text {
+                    font-size: rem(18);
+                    letter-spacing: .1em;
+                    @include clampVwPercent(margin-top, 56, 1440);
+                    @include tab {
+                        font-size: rem(16);
+                    }
+                    @include sp {
+                        font-size: clampVw(14, 14, 16, 430);
+                        @include clampVwRange(margin-top, 24, 375);
+                    }
+                }
+            }
+        }
+    }
+
+    .prologue {
+        padding-bottom: clampVw((209 * .7), 209, 209, 1440);
+        @include tab {
+            padding-bottom: clampVw((160 * .7), 160, 160, 820);
+        }
+        @include sp {
+            @include clampVwRange(padding-bottom, 112, 375);
+        }
+
+        &_inner {
+            width: min(90%, rem(1400));
+            @include margin-center;
+            @include sp {
+                width: 92%;
+            }
+
+            &_desc {
+                @include clampVwPercent(font-size, 28, 1440);
+                @include clampVwPercent(margin-top, 102, 1440);
+                letter-spacing: .1em;
+                line-height: 1.9;
+                font-weight: 600;
+                @include tab {
+                    @include clampVwPercent(font-size, 24, 820);
+                    @include clampVwPercent(margin-top, 80, 1024);
+                }
+                @include sp {
+                    font-size: clampVw(16, 16, 20, 375);
+                    @include clampVwRange(margin-top, 64, 375);
+                }
+            }
+        }
+
+        #flipbook  {
+            width: min(92%, rem(1660));
+            overflow-x: hidden;
+            @include clampVwPercent(margin-top, 120, 1440);
+            @include tab-sp {
+                width: 90%;
+                @include margin-center;
+            }
+            @include tab {
+                @include clampVwPercent(margin-top, 96, 1024);
+            }
+            @include sp {
+                @include clampVwPercent(margin-top, 56, 375);
+            }
+            
+        } 
+    }
+}

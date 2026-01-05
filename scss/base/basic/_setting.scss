@@ -1,0 +1,227 @@
+@use "sass:math";
+
+
+// path
+$co-path: './images/common/';
+
+// responsive
+$pc: 1025px;
+$nav: 1024px;
+$tb: 601px;
+$sp: 600px;
+
+
+@mixin pc {
+    @media (min-width: ($pc)) {
+        @content;
+    }
+}
+
+@mixin pc-lg {
+    @media (max-width: ($nav)) {
+        @content;
+    }
+}
+
+@mixin tab-sp {
+    @media (max-width: ($nav)) {
+        @content;
+    }
+}
+
+@mixin tab {
+  @media (min-width: ($tb)) and (max-width: ($nav)) {
+    @content;
+  }
+}
+
+@mixin pc-tab {
+    @media (min-width: ($tb)) {
+        @content;
+    }
+}
+
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+// clamp function
+
+@function clampVw($min, $size, $max, $vp: 1920) {
+    $min: $min * 0.1rem;
+    $max: $max * 0.1rem;
+    $num: math.div(100, $vp) * 1vw;
+    $size_vw: $num * $size;
+    @return clamp($min, $size_vw, $max);
+}
+
+@function vw($vw, $viewport) {
+    $rate: math.div(100 , $viewport);
+    @return $rate * $vw * 1vw;
+}
+
+@function pct($pct, $ws: 1920) {
+    $ratio: math.div(100 , $ws);
+    @return $ratio * $pct * 1%;
+}
+
+@function rem($rem) {
+    $baseFz: 16;
+    @return math.div($rem, ($baseFz * 0.625)) + rem;
+}
+
+/*-------- clampVwの共通パーツ --------*/
+
+@mixin clampVwPercent($property, $clampNum, $clampView) {
+    #{$property}: clampVw(($clampNum * .7), $clampNum, $clampNum, $clampView);
+}
+
+/*-------- clampVwの共通パーツ(2) --------*/
+
+@mixin clampVwRange($prop, $c-num, $c-view) {
+    #{$prop}: clampVw(($c-num * .7), $c-num, ($c-num * 1.2), $c-view);
+}
+
+
+// mixin
+
+/*-------- positionの共通パーツ --------*/
+
+@mixin position-center() {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/*-------- marginの共通パーツ --------*/
+
+@mixin margin-center() {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*-------- paddingの共通パーツ --------*/
+
+@mixin padding-basic() {
+
+    @include pc {
+        padding-right: clampVw(48, 96, 96, 1920);
+        padding-left: clampVw(48, 96, 96, 1920);
+    }
+
+    @include tab {
+        padding-right: clampVw(24, 48, 48, 820);
+        padding-left: clampVw(24, 48, 48, 820);
+    }
+
+    @include sp {
+        padding-right: clampVw(16, 20, 20, 375);
+        padding-left: clampVw(16, 20, 20, 375);
+    }
+}
+
+/*-------- wrapperの共通パーツ --------*/
+
+@mixin wpr ($wrapper-width, $mr-auto: null, $ml-auto: null) {
+    max-width: rem($wrapper-width);
+    width: 100%;
+    @if $mr-auto != null {
+        margin-right: $mr-auto;
+    } @else {
+        margin-right: auto;
+    }
+    @if $ml-auto != null {
+        margin-left: $ml-auto;
+    } @else {
+        margin-left: auto;
+    }
+}
+
+/*-------- backgroundの共通パーツ --------*/
+
+@mixin bg-no-repeat-center() {
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/*-------- maskの共通パーツ --------*/
+
+@mixin mask-no-repeat-center() {
+    mask-repeat: no-repeat;
+    mask-position: center center;
+}
+
+@mixin mask-no-repeat-center-content() {
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    mask-size: contain;
+}
+
+/*-------- ボタンの共通パーツ --------*/
+
+@mixin util-btn-style ($class-name) {
+
+    .#{$class-name} {
+        @include pc-tab {
+            width: min(100%, rem(250));
+        }
+
+        @include sp {
+            width: min(100%, rem(180));
+        }
+    }
+
+    .#{$class-name}_link {
+        @include pc-tab {
+            padding-top: clampVw(12, 18, 18, 820);
+            padding-bottom: clampVw(14, 20, 20, 820);
+        }
+
+        @include sp {
+            padding-top: clampVw(8, 14, 14, 375);
+            padding-bottom: clampVw(8, 14, 14, 375);
+        }
+    }
+}
+
+/*-------- 日本語・英語テキストの共通パーツ --------*/
+
+@mixin font-zom($color: null, $font-weight: null, $letter-spacing: null) {
+    @if $color != null {
+        color: $color;
+    } @else {
+        color: var(--fo-blc);
+    }
+    @if $font-weight != null {
+        font-weight: $font-weight;
+    } @else {
+        font-weight: 700;
+    }
+    @if $letter-spacing != null {
+        // 正しく変数に値を代入
+        $letter-spacing: math.div($letter-spacing, 1000) * 1em;
+    } @else {
+        $letter-spacing: 0.1em;
+    }
+}
+
+@mixin font-pfd($color: null, $font-weight: null, $letter-spacing: null) {
+    @if $color != null {
+        color: $color;
+    } @else {
+        color: var(--co-blc);
+    }
+    @if $font-weight != null {
+        font-weight: $font-weight;
+    } @else {
+        font-weight: 700;
+    }
+    font-family: var(--fo-pfd);
+    @if $letter-spacing != null {
+        $letter-spacing: math.div($letter-spacing, 1000) * 1em;
+    } @else {
+        $letter-spacing: 0.1em;
+    }
+}

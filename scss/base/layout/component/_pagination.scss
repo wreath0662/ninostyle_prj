@@ -1,0 +1,195 @@
+@use "sass:math";
+@use "../../basic/setting" as *;
+
+/*-------------------------------------------*/
+/*  pagination
+/*-------------------------------------------*/
+
+.pager{
+
+    @include pc {
+        margin-top: clampVw((160 * .7), 160, 160, 1440);
+    }
+
+    @include tab {
+        @include clampVwRange(margin-top, 72, 820);
+    }
+
+    @include sp {
+        @include clampVwRange(margin-top, 36, 375);
+    }
+
+    .pagination{
+
+        ul {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+
+            li {
+
+                a {
+                    margin-right: rem(2);
+                    margin-left: rem(2);
+                    display: inline-flex;
+                    justify-content: center;
+                    width:60px;
+                    background-color: var(--co-gray-hv);
+                    height:60px;
+                    line-height:60px;
+                    font-weight: 600;
+                    color:var(--co-wht);
+                    transition:0.3s;
+                    position:relative;
+                        
+                    @include pc-tab {
+                        font-size: rem(16);
+                    }
+            
+                    @include sp {
+                        font-size: clampVw(14, 14, 16, 375);
+                    }
+
+                    &::before,
+                    &::after {
+                        content:"";
+                        position:absolute;
+                        border-top:30px solid transparent;
+                        border-bottom:30px solid transparent;
+                    }
+
+                    &:hover {
+                        color: var(--co-ohr);
+                    }
+
+                    &.prev,
+                    &.next {
+                        span {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 100%;
+                            height: 100%;
+
+                            &:hover {
+
+                                &::before {
+                                    background-color: var(--co-ohr);
+                                }
+                            }
+            
+                            &::before {
+                                display: inline-block;
+                                aspect-ratio: 72/125;
+                                background-color: var(--co-wht);
+                                mask-image: url(#{$co-path} + 'icon-arw-rgt-blc.svg');
+                                @include mask-no-repeat-center-content();
+                                width: rem(7);
+                                content: "";
+                                transition: var(--trs-bgc);
+                            }
+                        }
+                    }
+
+                    &.prev{
+                        padding-right: 12px;
+                        border-radius: 30px 0px 0px 30px;
+            
+                        @include sp {
+                            width: 80px;
+                        }
+            
+                        span {
+            
+                            &::before {
+                                transform: rotate(180deg);
+                            }
+                        }
+                    }
+                    
+                    &.next{
+                        border-radius: 0px 30px 30px 0px;
+                    }
+
+                    &:not(.prev) {
+                        &::before {
+                            border-right: 20px solid var(--co-gray-hv);
+                            right:100%;
+                        }
+                    }
+
+                    &:not(.next) {
+                        &::after {
+                            border-right: 20px solid var(--co-wht);
+                            right:0;
+                        }
+                    }
+
+                    &:not(.prev, .next) {
+                        padding-right: 26px;
+                    }
+            
+                    &:not(.prev, .next) {
+                        @include sp {
+                            display: none;
+                        }
+                    }
+                }
+
+                span {
+
+                    @include pc-tab {
+                        font-size: rem(16);
+                    }
+            
+                    @include sp {
+                        font-size: clampVw(14, 14, 16, 375);
+                    }
+
+                    &.current {
+                        padding-right: 26px;
+                
+                        @include pc-tab {
+                            color:var(--co-ohr);
+                        }
+
+                        &::before,
+                        &::after {
+                            content:"";
+                            position:absolute;
+                            border-top:30px solid transparent;
+                            border-bottom:30px solid transparent;
+                        }
+    
+                        &::before {
+                            border-right: 20px solid var(--co-gray-hv);
+                            right:100%;
+                        }
+    
+                        &::after {
+                            border-right: 20px solid var(--co-wht);
+                            right:0;
+                        }
+    
+                    }
+
+                    &:not(.arrow) {
+                        margin-right: rem(2);
+                        margin-left: rem(2);
+                        display: inline-flex;
+                        justify-content: center;
+                        width:60px;
+                        background-color: var(--co-gray-hv);
+                        height:60px;
+                        line-height:60px;
+                        font-weight: 600;
+                        color:var(--co-wht);
+                        transition:0.3s;
+                        position:relative;
+                    }
+                }
+            }
+        }
+    }
+}

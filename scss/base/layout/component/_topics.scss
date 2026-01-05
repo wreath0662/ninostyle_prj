@@ -1,0 +1,274 @@
+@use "../../basic/setting" as *;
+@use "sass:math";
+
+.topics {
+    background-image: url(./images/common/png/pattern-geometric.png);
+
+    @include pc {
+        padding-right: pct(96, 1920);
+        padding-left: pct(96, 1920);
+    }
+
+    // @include tab {
+    //     padding-top: clampVw(60, 72, 72, 768);
+    //     padding-bottom: clampVw(52, 60, 60, 768);
+    // }
+
+    // @include sp {
+    //     padding-top: clampVw(40, 40, 48, 375);
+    //     padding-bottom: clampVw(40, 40, 48, 375);
+    // }
+
+    .wrapper {
+        
+        @include pc {
+            max-width: clampVw(802, 1604, 1604, 1920);
+        }
+    }
+
+    &_textarea {
+        display: flex;
+        
+        @include pc {
+            align-items: center;
+        }
+
+        @include tab-sp {
+            flex-direction: column;
+        }
+
+        @include tab {
+            row-gap: clampVw(4, 8, 8, 768);
+        }
+
+        @include sp {
+            padding-right: pct(20, 375);
+        }
+
+        .util-title {
+
+            @include pc {
+                font-size: clampVw(36, 48, 48, 1920);
+            }
+
+            @include tab {
+                font-size: clampVw(36, 48, 48, 768);
+            }
+
+            @include sp {
+                font-size: clampVw(32, 40, 48, 375);
+            }
+
+            .clip {
+                -webkit-text-stroke: rem(1) var(--co-blc);
+            }
+        }
+
+        &_text {
+            
+            @include pc {
+                font-size: clampVw(14, 16, 16, 1440);
+            }
+            
+            @include pc-tab {
+                font-weight: bold;
+            }
+
+            @include sp {
+                font-size: clampVw(14, 14, 16, 375);
+            }
+        }
+    }
+}
+
+main.home {
+
+    .topics {
+
+        @include pc {
+            padding-top: pct(145, 1920);
+            padding-bottom: pct(80, 1920);
+        }
+
+        @include tab {
+            padding-top: clampVw(60, 72, 72, 768);
+            padding-bottom: clampVw(52, 60, 60, 768);
+        }
+    
+        @include sp {
+            padding-top: clampVw(40, 40, 48, 375);
+            padding-bottom: clampVw(40, 40, 48, 375);
+        }
+
+        &_textarea {
+            column-gap: rem(36);
+        }
+
+        .wrapper {
+    
+            @include tab {
+                padding-left: pct(40, 1024);
+            }
+    
+            @include sp {
+                padding-left: pct(20, 375);
+            }
+        }
+    }
+}
+
+main.page {
+
+    &.banquet {
+
+        .topics {
+
+            @include pc {
+                padding-top: pct(48, 1920);
+            }
+
+            @include tab {
+                padding-top: clampVw(40, 48, 48, 768);
+            }
+        
+            @include sp {
+                padding-top: clampVw(36, 40, 48, 375);
+            }
+
+            .wrapper {
+
+                @include sp {
+                    padding-left: pct(20, 375);
+                }
+            }
+
+            &_textarea {
+
+                @include pc {
+                    flex-direction: column;
+                    row-gap: rem(16);
+                }
+
+                @include tab-sp {
+                    align-items: center;
+                }
+            }
+        }
+    }
+
+    &.restaurant {
+
+        .topics {
+
+            @include pc {
+                padding-top: pct(48, 1920);
+            }
+
+            @include tab {
+                padding-top: clampVw(40, 48, 48, 768);
+            }
+        
+            @include sp {
+                padding-top: clampVw(36, 40, 48, 375);
+            }
+
+            .wrapper {
+                
+                @include sp {
+                    padding-left: pct(20, 375);
+                }
+            }
+
+            &_textarea {
+
+                @include pc {
+                    flex-direction: column;
+                    row-gap: rem(16);
+                }
+
+                @include tab-sp {
+                    align-items: center;
+                }
+            }
+        }
+    }
+
+    &.conference {
+        .topics {
+
+            @include pc {
+                padding-top: pct(48, 1920);
+            }
+
+            @include tab {
+                padding-top: clampVw(40, 48, 48, 768);
+            }
+        
+            @include sp {
+                padding-top: clampVw(36, 40, 48, 375);
+            }
+
+            .wrapper {
+                
+                @include sp {
+                    padding-left: pct(20, 375);
+                }
+            }
+
+            &_textarea {
+
+                @include pc {
+                    flex-direction: column;
+                    row-gap: rem(16);
+                }
+
+                @include tab-sp {
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+main.post {
+
+    &.subject {
+
+        .topics {
+
+            @include pc {
+                padding-top: pct(60, 1920);
+                padding-bottom: pct(100, 1920);
+            }
+
+            @include tab {
+                padding-top: clampVw(48, 60, 60, 768);
+                padding-bottom: clampVw(64, 72, 80, 768);
+            }
+        
+            @include sp {
+                padding-top: clampVw(36, 40, 48, 375);
+                padding-bottom: clampVw(48, 56, 64, 375);
+            }
+
+            .wrapper {
+
+                @include sp {
+                    padding-left: pct(20, 375);
+                }
+            }
+
+            &_textarea {
+
+                @include pc {
+                    flex-direction: column;
+                    row-gap: rem(16);
+                }
+
+                @include tab-sp {
+                    align-items: center;
+                }
+            }
+        }
+    }
+}

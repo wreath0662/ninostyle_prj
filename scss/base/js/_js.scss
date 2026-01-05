@@ -1,0 +1,141 @@
+@use "animation";
+
+// intersectionObserver
+
+.fade {
+    &-appear {
+
+        opacity: 0;
+
+        &.fade-action {
+            animation-name: appear;
+            animation-duration: .8s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    &-in {
+
+        opacity: 0;
+
+        &.fade-action {
+            animation-name: fade-in;
+           animation-duration: .8s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    &-up {
+
+        opacity: 0;
+
+        &.fade-action {
+            animation-name: fade-up;
+           animation-duration: .8s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    &-right {
+
+        opacity: 0;
+
+        &.fade-action {
+            animation-name: fade-right;
+           animation-duration: .8s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    &-left {
+
+        opacity: 0;
+
+        &.fade-action {
+            animation-name: fade-left;
+            animation-duration: .8s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+    }
+}
+
+// top-mv
+
+
+
+// translate jQuery from vanilla
+
+// .j {
+//     &-out {
+//         animation-name: disappear;
+//         animation-duration: .8s;
+//         animation-fill-mode: both;
+//     }
+// }
+
+.slide {
+    &-appear {
+
+        opacity: 0;
+
+        &.slide-action {
+            animation-name: appear;
+            animation-duration: .8s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    &-in {
+
+        opacity: 0;
+
+        &.slide-action {
+            animation-name: fade-in;
+           animation-duration: .8s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    &-up {
+
+        opacity: 0;
+
+        &.slide-action {
+            animation-name: fade-up;
+           animation-duration: .8s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    &-right {
+
+        opacity: 0;
+
+        &.slide-action {
+            animation-name: fade-right;
+           animation-duration: .8s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    &-left {
+
+        opacity: 0;
+
+        &.slide-action {
+            animation-name: fade-left;
+            animation-duration: .8s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+    }
+}

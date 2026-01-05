@@ -1,0 +1,55 @@
+@use "sass:math";
+@use "../../basic/setting" as *;
+
+main.page {
+    
+    .error {
+        padding-top: clampVw((150 * .7), 150, 150, 1440);
+        padding-bottom: clampVw((228 * .7), 228, 228, 1440);
+        @include padding-basic();
+
+        @include tab {
+            padding-top: clampVw((96 * .7), 96, 96, 820);
+            padding-bottom: clampVw((148 * .7), 148, 148, 820);
+        }
+
+        @include sp {
+            @include clampVwRange(padding-top, 48, 375);
+            @include clampVwRange(padding-bottom, 72, 375);
+        }
+
+
+        &_inner {
+            width: min(90%, 1400px);
+            @include margin-center;  
+
+           .error_title {
+                display: flex;
+                color: var(--co-gray-li);
+                font-family: var(--fo-pfd);
+                letter-spacing: .1em;
+                font-size: clampVw(92, 139, 139, 1680);
+                @include tab {
+                    font-size: clampVw(52, 52, 111, 601);
+                }
+                @include sp {
+                    font-size: clampVw(38, 38, 52, 375);
+                }
+           } 
+
+           .error_text {
+                font-size: rem(40);
+                line-height: 1.5;
+                @include clampVwPercent(font-size, 42, 1440);
+                @include tab {
+                    @include clampVwRange(font-size, 32, 820);
+                }
+                @include sp {
+                    @include clampVwRange(font-size, 20, 375);
+                }
+           }
+
+        }
+
+    }
+}

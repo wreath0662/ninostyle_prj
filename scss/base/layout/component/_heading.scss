@@ -1,0 +1,216 @@
+@use "sass:math";
+@use "../../basic/setting" as *;
+
+/*-------------------------------------------*/
+/*  heading 共通
+/*-------------------------------------------*/
+.heading {
+
+    &_main {
+        display: inline-flex;
+        flex-direction: column;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+
+        @include pc-tab {
+            row-gap: rem(16);
+            font-size: clampVw(14, 16, 18, 820);
+        }
+
+        @include sp {
+            row-gap: rem(8);
+            font-size: rem(14);
+        }
+
+        &::after {
+            display: inline-block;
+            @include font-zom(null, 400, 100);
+            content: attr(data-head);
+            letter-spacing: 0.1em;
+
+
+            @include pc {
+                font-size: clampVw((64 * .7), 64, 64, 1440);
+            }
+
+            @include tab {
+                font-size: clampVw((36 * .7), 36, (36 * 1.2), 820);
+            }
+
+            @include sp {
+                font-size: clampVw(22, 24, (24 * 1.2), 375);
+            }
+        }
+    }
+}
+
+/*-------------------------------------------*/
+/*  トップページ
+/*-------------------------------------------*/
+
+main.home {
+
+    .heading {
+        &_main {
+            display: flex;
+            position: relative;
+            border-bottom-style: solid;
+            border-bottom-color: var(--co-gray-li);
+    
+            @include pc-tab {
+                border-bottom-width: rem(6);
+                padding-bottom: clampVw(10, 14, 14, 820);
+            }
+    
+            @include sp {
+                border-bottom-width: rem(4);
+                padding-bottom: clampVw(6, 10, 10, 375);
+            }
+    
+            &::before {
+                position: absolute;
+                left: 0;
+                display: inline-block;
+                background-color: var(--co-gray);
+                content: "";
+    
+                @include pc {
+                    width: rem(48);
+                    bottom: clampVw(-6, -4, -4, 820);
+                }
+    
+                @include tab {
+                    bottom: rem(-6);
+                    width: rem(36);
+                }
+    
+                @include pc-tab {
+                    height: rem(6);
+                }
+    
+                @include sp {
+                    bottom: rem(-4);
+                    width: rem(24);
+                    height: rem(4);
+                }    
+            }
+        }
+    }
+}
+
+/*-------------------------------------------*/
+/*  投稿一覧、 投稿詳細固定ページ
+/*-------------------------------------------*/
+
+main.archive,
+main.post,
+main.page,
+main.sub {
+    .heading {
+        position: relative;
+
+        &::after {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            transform: translateY(-50%);
+            width: 78%;
+            height: rem(1);
+            background-color: var(--co-blc);
+            content: "";
+
+            @include pc {
+                top: 62%;
+            }
+
+            @include tab {
+                top: 68%;
+            }
+            
+            @include sp {
+                top: 72%;
+                width: 70%;
+            }
+        }
+    }
+}
+
+/*-------------------------------------------*/
+/*  ラインナップ
+/*-------------------------------------------*/
+main.lineup {
+    .heading {
+        &::after {
+            width: 70%;
+            @include sp {
+                width: 62%;
+            }
+        }
+    }
+}
+
+/*-------------------------------------------*/
+/* ニノミヤ家具について
+/*-------------------------------------------*/
+main.about {
+    .heading.first {
+        &::after {
+            width: 70%;
+            @include sp {
+                width: 62%;
+            }
+        }
+    }
+
+    .heading.second {
+        &::after {
+            width: 58%;
+            @include sp {
+                width: 52%;
+            }
+        }
+    }
+}
+
+/*-------------------------------------------*/
+/*  お問い合わせ
+/*-------------------------------------------*/
+main.sub {
+    .heading {
+        &::after {
+            width: 62%;
+            @include sp {
+                width: 56%;
+            }
+        }
+    }
+}
+
+/*-------------------------------------------*/
+/*  お問い合わせ完了
+/*-------------------------------------------*/
+main.complete {
+    .heading {
+        &::after {
+            @include sp {
+                width: 48%;
+            }
+        }
+    }
+}
+
+/*-------------------------------------------*/
+/*  セミオーダー家具
+/*-------------------------------------------*/
+main.order {
+    .heading {
+        width: min(90%, 1400px);
+        @include margin-center;
+        &::after {
+            width: 60%;
+            @include sp {
+                width: 45%;
+            }
+        }
+    }
+}

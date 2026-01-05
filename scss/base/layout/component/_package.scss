@@ -1,0 +1,256 @@
+@use "sass:math";
+@use "../../basic/setting" as *;
+
+/*-------------------------------------------*/
+/*  共通
+/*-------------------------------------------*/
+.package_inner {
+    display: flex;
+    align-items: center;
+    width: min(98%, rem(1660));
+    column-gap: pct(111, 1660);
+    @include pc-lg {
+        flex-direction: column;
+        align-items: flex-start;
+        @include margin-center;
+    }
+    &_image {
+        width: pct(849, 1660);
+        @include pc-lg {
+            width: 100%;
+        }
+    }
+    
+    &_content {
+        width: pct(700, 1660);
+        @include pc-lg {
+           width: 92%;
+           @include clampVwPercent(margin-top, 56, 1280);
+           @include margin-center;
+        }
+        @include sp {
+            @include clampVwPercent(margin-top, 36, 375);
+        }
+
+        &_heading,
+        &_subTitle,
+        &_catch {
+            text-align: center;
+            font-weight: 500
+        }
+
+        &_heading {
+            @include clampVwPercent(font-size, 58, 1440);
+            @include pc-lg {
+                @include clampVwRange(font-size, 56, 1280);
+            }
+            @include sp {
+                @include clampVwRange(font-size, 32, 375)
+            }
+        }
+
+        &_subTitle {
+            @include clampVwPercent(font-size, 38, 1440);
+            margin-top: rem(16);
+            @include pc-lg {
+                margin-top: rem(12);
+                @include clampVwRange(font-size, 36, 1280);
+            }
+            @include sp {
+                margin-top: rem(8);
+                @include clampVwRange(font-size, 22, 375);
+            }
+        }
+
+        &_catch {
+            @include clampVwPercent(font-size, 43, 1440);
+            margin-top: clampVw(56, 112, 112, 1920);
+            line-height: 1.6;
+            letter-spacing: .2em;
+            @include pc-lg {
+                @include clampVwPercent(margin-top, 48, 1280);
+                @include clampVwRange(font-size, 42, 1280)
+            }
+            @include tab-sp {
+                margin-left: 0;
+            }
+            @include sp {
+                @include clampVwPercent(margin-top, 40, 375);
+                @include clampVwRange(font-size, 24, 430);
+            }
+        }
+        
+        &_text {
+            font-size: rem(16);
+            @include clampVwPercent(margin-top, 64, 1440);
+            margin-top: clampVw(38, 64, 64, 1440);
+            line-height: 2;
+            font-weight: 600;
+            text-align: center;
+            @include sp {
+                font-weight: 400;
+                @include clampVwRange(margin-top, 32, 375);
+                font-size: clampVw(14, 14, 16, 430);
+            }
+        }
+    }
+}
+
+/*-------------------------------------------*/
+/* ラインナップ
+/*-------------------------------------------*/
+.lineup {
+    .package_inner {
+        &_image {
+              img {
+                @include pc-lg {
+                    aspect-ratio: 5 / 3;
+                }
+                @include sp {
+                    aspect-ratio: auto;
+                }
+            }
+        }
+    }
+}
+
+/*-------------------------------------------*/
+/*  ニノミヤ家具について
+/*-------------------------------------------*/
+.about {
+    .package_inner {
+        column-gap: pct(160, 1660);
+
+        @include pc {
+            opacity: 0; /* 初期状態では全てのページを非表示にする */
+            visibility: hidden;
+            transition: opacity 0.5s ease; /* opacityの変化を0.5秒かけて行う */
+        }
+
+         &.active {
+            @include pc {
+                opacity: 1;
+                visibility: visible;
+            }
+         }
+        @include tab {
+            width: 90%;
+            @include margin-center;
+            // @include clampVwPercent(margin-top, 96, 1024);
+        }
+        @include sp {
+            width: 92%;
+            @include margin-center;
+            // @include clampVwPercent(margin-top, 56, 375);
+        }
+
+        &_image {
+            width: pct(775, 1660);
+            @include tab-sp {
+                width: 100%;
+            }
+        }
+
+        &_content {
+            text-align: left;
+            width: pct(720, 1660);
+            @include tab-sp {
+                width: 100%;
+            }
+
+            &_number,
+            &_heading {
+                @include clampVwPercent(font-size, 40, 1440);
+                font-weight: 600;
+                letter-spacing: .1em;
+                line-height: 1.6;
+                text-align: left;
+                @include tab {
+                    @include clampVwPercent(font-size, 34, 1024);
+                }
+                @include sp {
+                    @include clampVwRange(font-size, 22, 375);
+                }
+            }
+
+            &_text {
+                text-align: left;
+                font-size: clampVw(16, 18, 18, 1440);
+                line-height: 2.3;
+                letter-spacing: .1em;
+                font-weight: 400;
+                @include tab-sp {
+                    line-height: 2;
+                }
+                @include sp {
+                    font-size: clampVw(14, 14, 16, 430);
+                }
+
+                &:nth-of-type(1) {
+                    @include clampVwPercent(margin-top, 104, 1440);
+                    @include tab {
+                        @include clampVwPercent(margin-top, 78, 1024)
+                    }
+                    @include sp {
+                        @include clampVwRange(margin-top, 32, 430)
+                    }
+                }
+                
+                &:nth-of-type(2) {
+                    @include clampVwPercent(margin-top, 48, 1440);
+                    @include tab {
+                        @include clampVwPercent(margin-top, 32, 1024)
+                    }
+
+                    @include sp {
+                        @include clampVwRange(margin-top, 24, 375)
+                    }
+                }
+            }
+        }
+
+        &.page2 {
+            @include tab {
+                @include clampVwPercent(margin-top, 120, 1024);
+            }
+            @include sp {
+                @include clampVwPercent(margin-top, 72, 375);
+            }
+
+            .package_inner_content {
+                &_text {
+                    @include pc {
+                        line-height: 1.9;
+                    }
+
+                    &:first-of-type {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 48, 1440);
+                        }
+                    }
+                }
+            }
+        }
+
+        &.page3 {
+            @include tab {
+                @include clampVwPercent(margin-top, 120, 1024);
+            }
+            @include sp {
+                @include clampVwPercent(margin-top, 72, 375);
+            }
+
+            .package_inner_content {
+                &_text {
+                    @include pc {
+                        line-height: 1.9;
+                    }
+
+                    &:first-of-type {
+                        margin-top: clampVw(0, 64, 64, 1920);
+                    }
+                }
+            }
+        }
+    }
+}

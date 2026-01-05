@@ -1,0 +1,134 @@
+@use "sass:math";
+@use "../../basic/setting" as *;
+
+main.page {
+
+    &.banquet {
+
+        .mv {
+
+            .util-title {
+
+                .en {
+                    color: var(--co-blc);
+
+                    @include pc {
+                        font-size: clampVw(72, 112, 112, 1920);
+                    }
+                }
+
+                .ja {
+                    color: var(--co-nvy);
+
+                    @include pc {
+                        font-size: clampVw(16, 24, 24, 1920);
+                    }
+                }
+            }
+
+            &_slider {
+                @include pc-tab {
+                    aspect-ratio: 1920/600;
+                }
+
+                @include sp {
+                    aspect-ratio: 75/56;
+                }
+
+                .swiper {
+                    height: 100%;
+
+                    @include sp {
+                    }
+
+                    &-wrapper {
+                        height: 100%;
+                    }
+
+                    &-slide {
+                        height: 100%;
+
+                        &-inner {
+                            height: 100%;
+                        }
+
+                        &-figure {
+                            height: 100%;
+
+                            img {
+                                object-fit: cover;
+
+                                @include sp {
+                                    height: 100%;
+                                }
+                            }
+                        }
+                    }
+
+                    &-horizontal>.swiper-pagination-bullets,
+                    &-pagination-bullets.swiper-pagination-horizontal,
+                    &-pagination-custom,
+                    &-pagination-fraction {
+                        width: auto !important;
+                        
+                        @include pc {
+                            bottom: rem(36);
+                            left: rem(84);
+                        }
+
+                        @include tab {
+                            bottom: rem(24);
+                            left: rem(16);
+                        }
+                    }
+    
+                    &-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+                    &-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    
+                        @include pc {
+                            margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 8px);
+                        }
+
+                        @include tab {
+                            margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 7px);
+                        }
+    
+                        @include sp {
+                            margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 6px);
+                        }
+                    }
+    
+                    &-pagination {
+    
+                        &-bullet {
+                            background: rgb(255, 255, 255, .7);
+                            opacity: 1;
+    
+                            @include sp {
+                                width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 6px));
+                                height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 6px));
+                            }
+    
+                            &-active {
+                                position: relative;
+                                background-color: var(--wp--preset--color--white);
+            
+                                &::after {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 180%;
+                                    aspect-ratio: 1/1;
+                                    border: rem(1) solid var(--wp--preset--color--white);
+                                    border-radius: 50%;
+                                    content: "";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

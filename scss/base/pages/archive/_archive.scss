@@ -1,0 +1,187 @@
+@use "../../basic/setting" as *;
+@use "sass:math";
+
+/*-------------------------------------------*/
+/*  お知らせ一覧
+/*-------------------------------------------*/
+
+main.archive {
+
+    .wrapper {
+        @include wpr(1400);
+    }
+
+    .news {
+        padding-top: clampVw((150 * .7), 150, 150, 1440);
+        padding-bottom: clampVw((228 * .7), 228, 228, 1440);
+        @include padding-basic();
+
+        @include tab {
+            padding-top: clampVw((96 * .7), 96, 96, 820);
+            padding-bottom: clampVw((148 * .7), 148, 148, 820);
+        }
+
+        @include sp {
+            @include clampVwRange(padding-top, 48, 375);
+            @include clampVwRange(padding-bottom, 72, 375);
+        }
+
+        &_list {
+            
+            @include pc {
+                @include clampVwPercent(margin-top, 100, 1440);
+            }
+
+            @include tab {
+                @include clampVwRange(margin-top, 56, 820);
+            }
+
+            @include sp {
+                @include clampVwRange(margin-top, 36, 375);
+            }
+
+            &_article {
+                border-bottom-style: solid;
+                border-bottom-width: rem(1);
+                border-bottom-color: var(--co-gray-dr-th);
+
+               .link {
+                    display: block;
+                    transition: var(--trs-opc);
+
+                    @include pc {
+                        padding-top: clampVw(34, 42, 42, 1440);
+                        padding-bottom: rem(14);
+                    }
+
+                    @include tab {
+                        @include clampVwRange(padding-top, 28, 820);
+                        padding-bottom: rem(12);
+                    }
+
+                    @include sp {
+                        @include clampVwRange(padding-top, 18, 375);
+                        padding-bottom: rem(10);
+                    }
+
+                    &:hover {
+                        opacity: .4;
+                    }
+
+                    &_unit {
+                        display: flex;
+                        position: relative;
+                        
+                        @include pc {
+                            column-gap: clampVw(48, 56, 56, 1440);
+                        }
+                        
+                        @include tab {
+                            @include clampVwRange(column-gap, 32, 820);
+                        }
+                        
+                        @include pc-tab {
+                            align-items: center;
+                        }
+
+                        @include sp {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            row-gap: clampVw(10, 12, 12, 375);
+                        }
+
+                        &:hover {
+                            &::after {
+                                right: 2%;
+                            }
+                        }
+
+                        &::after {
+                            display: inline-block;
+                            position: absolute;
+                            right: 3%;
+                            background-image: url(#{$co-path} + 'icon-arw-dbl-rgt-blc.svg');
+                            @include bg-no-repeat-center();
+                            background-size: contain;
+                            width: rem(12);
+                            aspect-ratio: 1/1;
+                            content: "";
+                            transition: var(--trs-rgt);
+
+                            @include sp {
+                                top: 50%;
+                                transform: translateY(-50%);
+                            }
+                        }
+
+                        &_time {
+                            display: inline-block;
+                            position: relative;
+                            background-color: var(--co-gray-dr);
+                            color: var(--co-wht);
+                            font-weight: 500;
+
+                            @include pc {
+                                margin-right: clampVw(20, 28, 28, 1440);
+                                padding: rem(11) clampVw(24, 32, 32, 1440);
+                                font-size: clampVw(16, 20, 20, 1440);
+                            }
+
+                            @include tab {
+                                @include clampVwRange(margin-right, 20, 820);
+                                padding: rem(8) clampVw(16, 24, 24, 820);
+                                font-size: rem(18);
+                            }
+
+                            @include sp {
+                                padding: rem(5) clampVw(12, 16, 16, 375);
+                                font-size: clampVw(16, 16, 18, 375);
+                            }
+
+                            &::after {
+                                
+                                @include pc-tab {
+                                    display: inline-block;
+                                    position: absolute;
+                                    top: 0;
+                                    width: rem(1);
+                                    height: 100%;
+                                    background-color: var(--co-gray-dr);
+                                    content: "";
+                                } 
+                                
+                                @include pc {
+                                    right: clampVw(-28, -28, -20, 1440);
+                                }
+
+                                @include tab {
+                                    right: clampVw((-20 * 1.2), -20, (-20 * .8), 820);
+                                }
+
+                                @include sp {
+                                    content: none;
+                                }
+                            }
+                        }
+
+                        &_heading {
+                            @include pc {
+                                font-size: clampVw(16, 20, 20, 1440);
+                            }
+
+                            @include tab {
+                                width: 60%;
+                                font-size: rem(18);
+                            }
+
+                            @include sp {
+                                width: 87%;
+                                font-size: clampVw(16, 16, 18, 375);
+                            }
+                        }
+                    }
+               } 
+            }
+        }
+    }
+}

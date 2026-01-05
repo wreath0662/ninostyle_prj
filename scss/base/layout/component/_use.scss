@@ -1,0 +1,267 @@
+@use "../../basic/setting" as *;
+@use "sass:math";
+
+.use {
+    background-color: var(--co-gr-li-dr);
+    background-image: url(./images/common/png/pattern-green.png);
+
+    @include pc {
+        padding-top: clampVw(64, 125, 125, 1920);
+        padding-right: pct(96, 1920);
+        padding-bottom: clampVw(36, 70, 70, 1920);
+        padding-left: pct(96, 1920);
+    }
+
+    @include tab {
+        padding-top: clampVw(48, 56, 64, 768);
+        padding-right: pct(40, 1024);
+        padding-left: pct(40, 1024);
+    }
+
+    @include sp {
+        padding-top: clampVw(32, 36, 40, 375);
+        padding-right: pct(20, 375);
+        padding-left: pct(20, 375);
+    }
+
+    .wrapper {
+        background-color: var(--wp--preset--color--white);
+
+        @include pc {
+            max-width: clampVw(666, 1332, 1332, 1920);
+            padding-top: clampVw(40, 80, 80, 1920);
+            padding-right: pct(135, 1728);
+            padding-bottom: clampVw(50, 100, 100, 1920);
+            padding-left: pct(135, 1728);
+            border-radius: clampVw(6, 10, 10, 1920);
+        }
+
+        @include tab {
+            padding-top: clampVw(32, 40, 48, 768);
+            padding-right: pct(40, 1024);
+            padding-bottom: clampVw(24, 48, 48, 1024);
+            padding-left: pct(40, 1024);
+            border-radius: clampVw(6, 8, 8, 768);
+        }
+
+        @include sp {
+            padding-top: clampVw(26, 30, 36, 375);
+            padding-right: pct(20, 375);
+            padding-bottom: clampVw(30, 36, 40, 375);
+            padding-left: pct(20, 375);
+            border-radius: clampVw(4, 6, 6, 375);
+        }
+    }
+
+    .util-title {
+        display: flex;
+        align-items: center;
+        border-bottom-style: solid;
+        border-bottom-color: var(--co-gray-li-dr);
+        color: var(--co-blc);
+        font-weight: bold;
+
+        @include pc {
+            column-gap: clampVw(10, 16, 16, 1920);
+            padding-bottom: clampVw(16, 24, 24, 1920);
+            font-size: clampVw(28, 40, 40, 1920);
+        }
+        
+        @include pc-tab {
+            border-bottom-width: rem(2);
+        }
+        
+        @include tab {
+            column-gap: clampVw(6, 12, 12, 768);
+            padding-bottom: clampVw(10, 18, 18, 768);
+            font-size: clampVw(28, 32, 32, 768);
+        }
+        
+        @include sp {
+            column-gap: clampVw(6, 8, 10, 375);
+            padding-bottom: clampVw(8, 12, 16, 375);
+            border-bottom-width: rem(1);
+            font-size: clampVw(20, 24, 28, 375);
+        }
+
+        &::before {
+            display: inline-block;
+            aspect-ratio: 1/1;
+            background-color: var(--co-gr-li);
+            content: "";
+            
+            @include pc {
+                width: clampVw(20, 25, 25, 1920);
+                border-radius: clampVw(20, 25, 25, 1920);
+            }
+
+            @include tab {
+                margin-top: clampVw(4, 4, 6, 768);
+                width: clampVw(16, 20, 20, 768);
+                border-radius: clampVw(16, 20, 20, 768);
+            }
+
+            @include sp {
+                width: clampVw(10, 12, 16, 375);
+                margin-top: clampVw(2, 3, 3, 375);
+                border-radius: clampVw(10, 12, 16, 375);
+            }
+        }
+    }
+
+    &_list {
+        display: flex;
+        flex-wrap: wrap;
+
+        @include pc {
+            column-gap: clampVw(30, 60, 60, 1920);
+            row-gap: clampVw(36, 60, 60, 1920);
+            margin-top: clampVw(32, 40, 40, 1920);
+        }
+
+        @include tab {
+            column-gap: pct(48, 870);
+            row-gap: clampVw(32, 48, 48, 768);
+            margin-top: clampVw(24, 28, 32, 768);
+        }
+
+        @include sp {
+            row-gap: clampVw(32, 36, 40, 375);
+            margin-top: clampVw(24, 28, 32, 375);
+        }
+
+        &_item {
+
+            @include pc {
+                width: pct(501, 1062);
+            }
+
+            @include tab {
+                width: pct(410, 870);
+            }
+
+            @include sp {
+                width: 100%;
+            }
+
+
+            &_link {
+
+                &:hover {
+
+                    .use_list_item_link_figure {
+
+                        img {
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+
+                &_figure {
+                    overflow: hidden;
+                    aspect-ratio: 167/84;
+
+                    img {
+                        transition: var(--trs-tsf);
+                        object-fit: cover;
+                    }
+                }
+
+                &_title {
+                    display: flex;
+                    align-items: center;
+                    font-weight: bold;
+                    line-height: 1.5;
+
+                    @include pc {
+                        column-gap: clampVw(12, 20, 20, 1920);
+                        margin-top: clampVw(12, 20, 20, 1920);
+                        font-size: clampVw(18, 24, 24, 1920);
+                    }
+
+                    @include tab {
+                        column-gap: clampVw(10, 16, 16, 1024);
+                        margin-top: clampVw(12, 20, 20, 768);
+                        font-size: clampVw(16, 20, 22, 768);
+                    }
+
+                    @include sp {
+                        column-gap: clampVw(8, 14, 14, 375);
+                        margin-top: clampVw(14, 18, 18, 375);
+                        font-size: clampVw(14, 16, 20, 375);
+                    }
+
+
+                    &::after {
+                        display: inline-block;
+                        aspect-ratio: 1/1;
+                        background-image: url(./images/common/svg/arrow-white-round-green.svg);
+                        background-repeat: no-repeat;
+                        background-position: 50% 50%;
+                        background-size: contain;
+                        content: "";
+
+                        @include pc {
+                            width: clampVw(20, 27, 27, 1920);
+                        }
+
+                        @include tab {
+                            width: clampVw(16, 20, 22, 768);
+                        }
+
+                        @include sp {
+                            width: clampVw(16, 18, 22, 375);
+                        }
+                    }
+                }
+
+                p {
+                    line-height: 1.5;
+
+                    @include pc {
+                        font-size: clampVw(14, 16, 16, 1920);
+                    }
+
+                    @include tab {
+                        font-size: clampVw(14, 14, 16, 768);
+                    }
+                }
+
+                &_text {
+
+                    @include pc {
+                        margin-top: clampVw(12, 16, 16, 1920);
+                    }
+
+                    @include tab {
+                        margin-top: clampVw(12, 16, 16, 768);
+                    }
+
+                    @include sp {
+                        margin-top: clampVw(10, 14, 14, 375);
+                    }
+
+                    &-note {
+
+                        background-color: var(--co-gray-li);
+
+                        @include pc {
+                            margin-top: clampVw(14, 20, 20, 1920);
+                            padding: clampVw(8, 12, 12, 1920);
+                        }
+
+                        @include tab {
+                            margin-top: clampVw(14, 20, 20, 768);
+                            padding: clampVw(8, 12, 12, 768);
+                        }
+
+                        @include sp {
+                            margin-top: clampVw(12, 18, 18, 375);
+                            padding: clampVw(8, 12, 12, 375);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,91 @@
+@use "setting" as *;
+
+.pc-lg-escape {
+    display: none;
+    @include pc-lg {
+        display: block;
+    }
+}
+
+.pc-only {
+    @include pc {
+        display: block;
+    }
+
+    @include tab-sp {
+        display: none;
+    }
+}
+
+.pc-escape {
+    @include pc {
+        display: none;
+    }
+
+    @include tab-sp {
+        display: block;
+    }
+}
+
+.tab-only {
+    @include pc {
+        display: none;
+    }
+
+    @include tab {
+        display: block;
+    }
+
+    @include sp {
+        display: none;
+    }
+}
+
+.tab-escape {
+    @include pc {
+        display: block;
+    }
+
+    @include tab {
+        display: none;
+    }
+
+    @include sp {
+        display: block;
+    }
+}
+
+.sp-only {
+    @include pc-tab {
+        display: none;
+    }
+
+    @include sp {
+        display: block;
+    }
+}
+
+.sp-escape {
+    @include pc-tab {
+        display: block;
+    }
+
+    @include sp {
+        display: none;
+    }
+}
+
+.ib {
+    display: inline-block;
+}
+
+.sp-delete {
+
+    @include pc-tab {
+        display: inline-block;
+    }
+
+    @include sp {
+        display: none;
+    }
+}

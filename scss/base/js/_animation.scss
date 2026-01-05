@@ -1,0 +1,145 @@
+// fade
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-right {
+    0% {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-infinite {
+    0% {
+        transform: translateX(120%);
+    }
+    100% {
+        transform: translateX(-110%);
+    }
+  }
+
+  @keyframes loading { 
+    100%{transform: rotate(1turn)}
+  }
+
+//   @keyframes slide-infinite-even {
+//     from {
+//         transform: translateX(0);
+//       }
+//       to {
+//         transform: translateX(-200%);
+//       }
+//   }
+
+// top-mv
+
+// @keyframes top-mv-heading {
+//     0% {
+//         transform: translate(0%, 360%);
+//     }
+//     100% {
+//         transform: translate(0%, 0%);
+//     }
+// }
+
+// @keyframes top-mv-line {
+//     0% {
+//         transform: scale(0, 0);
+//     }
+//     100% {
+//         transform: scale(1, 1);
+//     }
+// }
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(-25px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(25px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-right {
+    0% {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

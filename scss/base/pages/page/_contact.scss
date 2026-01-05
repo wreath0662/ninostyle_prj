@@ -1,0 +1,520 @@
+@use "sass:math";
+@use "../../basic/setting" as *;
+
+main.contact {
+    .contact {
+        padding-top: clampVw((150 * .7), 150, 150, 1440);
+        padding-bottom: clampVw((137 * .7), 137, 137, 1440);
+        @include tab {
+            padding-top: clampVw((96 * .7), 96, 96, 820);
+            padding-bottom: clampVw((100 * .7), 100, 100, 820);
+        }
+        @include sp {
+            @include clampVwRange(padding-top, 48, 375);
+            @include clampVwRange(padding-bottom, 70, 375);
+        }
+
+        &_inner {
+            width: min(90%, 1400px);
+            @include margin-center;
+            @include sp {
+                width: 92%;
+            }
+        }
+
+        &_text {
+            font-size: rem(18);
+            letter-spacing: .15em;
+            @include clampVwPercent(margin-top, 80, 1440);
+            font-weight: 500;
+            line-height: 2;
+            @include tab {
+                margin-top: rem(48);
+                font-size: clampVw(16, 18, 18, 820);
+            }
+            @include sp {
+                margin-top: rem(40);
+                font-size: clampVw(14, 14, 16, 430);
+            }
+        }
+
+        &_caption {
+            font-size: rem(14);
+            font-weight: 500;
+            letter-spacing: .15em;
+            @include sp {
+                font-size: clampVw(12, 12, 14, 430);
+            }
+        }
+        
+        .container {
+            width: min(94%, 980px);
+            @include margin-center;
+            @include clampVwPercent(margin-top, 156, 1440);
+            @include tab-sp {
+                width: 96%;
+            }
+            @include tab {
+                @include clampVwRange(margin-top, 88, 820);
+            }
+            @include sp {
+                @include clampVwRange(margin-top, 56, 430);
+            }
+        }
+
+        
+
+        table,tbody {
+            display: block;
+            width: 100%;
+        }
+
+        table {  
+            tr {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                column-gap: pct(55, 980);
+                width: 100%;
+                padding-top: rem(20);
+                padding-bottom: rem(20);
+                border-bottom: .47px solid #4D4D4D;
+        
+                @include tab-sp {
+                    display: block;
+                }
+
+                @include tab {
+                    padding-top: rem(24);
+                    padding-bottom: rem(24);
+                }
+        
+                @include sp {
+                    padding-top: rem(16);
+                    padding-bottom: rem(16);
+                }
+
+                &.first {
+                    padding-top: 0;
+                }
+                
+                th {
+                    width: pct(246, 980);
+                    font-weight: 500;
+                    color: #fff;
+                    background-color: #333;
+                    text-align: center;
+                    padding-top: rem(14.5);
+                    padding-bottom: rem(14.5);
+                    position: relative;
+                    @include tab-sp {
+                        display: block;
+                        margin-bottom: rem(12);
+                        text-align: left;
+                        padding-left: 36px;
+                    }
+                    @include tab {
+                        width: clampVw(195, 220, 220, 1024);
+                    }
+                    @include sp {
+                        padding-top: rem(12);
+                        padding-bottom: rem(12);
+                        width: clampVw(170, 170, 195, 375);
+                    }
+
+                    &::before {
+                        content: '※';
+                        font-size: rem(14);
+                        position: absolute;
+                        top: 50%;
+                        left: 16px;
+                        transform: translateY(-50%);
+                    }
+
+                    p {
+                        font-weight: bold;
+                        line-height: 1;
+                    }
+                }
+        
+                td {
+                    width: pct(679, 980);
+        
+                    @include tab-sp {
+                        display: block;
+                        width: 100%;
+                    }
+
+                    p {
+                        word-wrap: break-word;
+                    }
+                }
+            }
+        
+            input,textarea,select {
+                border: none;
+                background-color: #F2F2F2;
+                padding-right: 1em;
+                padding-left: 2em;
+                @include tab {
+                    padding-left: 1.5em;
+                }
+                @include sp {
+                    padding-left: 1em;
+                }
+            }
+        
+            input,select {
+                height: rem(47);
+                @include sp {
+                    height: rem(40);
+                }
+            }
+
+            // プルダウンで矢印のカスタマイズ
+            .category {
+                td {
+                    p {
+                        position: relative;
+                        cursor: pointer;
+                    
+                        &::after {
+                            content: "";
+                            width: 0;
+                            height: 0;
+                            border-style: solid;
+                            border-width: 10px 10px 0 10px;
+                            border-color: black transparent transparent transparent;
+                            position: absolute;
+                            top: 50%;
+                            right: 24px;
+                            transform: translateY(-50%);
+                            pointer-events: none;
+                            @include tab-sp {
+                                right: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            textarea {
+                height: rem(300);
+                padding-top: 1em;
+                padding-bottom: 1em;
+                @include sp {
+                    height: rem(180);
+                }
+            }
+            
+            // ラジオボタン以外にappearance:noneかける。
+            select[name="your-type"],
+            input[type="text"],
+            input[type="tel"],
+            input[type="email"],
+            input[type="text"],
+            textarea[name="your-health"],
+            textarea[name="your-consult"],
+            input[type="confirm"],
+            input[type="button"],
+            input[type="submit"] {
+                appearance: none;
+            }
+            
+            /* iOSでのデフォルトスタイルをリセット */
+            input[type="submit"],
+            input[type="button"] {
+                border-radius: 0;
+                -webkit-box-sizing: content-box;
+                -webkit-appearance: button;
+                appearance: button;
+                border: none;
+                box-sizing: border-box;
+                &::-webkit-search-decoration {
+                    display: none;
+                }
+            }
+        
+        }
+
+        // セミオーダー家具についてを選択時に表示される項目
+        .semi_order_detail {
+            td {
+                width: rem(140);
+
+                @include tab-sp {
+                    margin-left: auto;
+                } 
+
+                @include sp {
+                    width: rem(110);
+                }
+                p {
+                    display: flex;
+                    column-gap: 10px;
+                    align-items: flex-end;
+                }
+            }
+        }
+        .checkbox {
+            margin-top: rem(56);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        
+            @include tab {
+                margin-top: rem(56);
+            }
+        
+            @include sp {
+                margin-top: rem(40);
+            }
+        
+            .wpcf7-list-item {
+                margin-left: 0;
+        
+                input[type=checkbox] {
+                    width: rem(30);
+                    height: rem(30);
+                    margin: 0;
+                    border: none;
+                    margin-right: rem(10);
+                    appearance: auto;
+                    @include sp {
+                        width: rem(24);
+                        height: rem(24);
+                    }
+                }
+            }
+        
+            .text {
+                padding-bottom: rem(2);
+                font-size: rem(18);
+                @include sp {
+                    font-size: rem(16);
+                }
+        
+                a {
+                    text-decoration: underline;
+                }
+            }
+        }
+        
+        .btn_shop-blc,
+        .btn_shop-wht {
+            width: min(100%, 395px);
+            margin-top: rem(72);
+            @include margin-center;
+            color: #fff;
+            @include tab {
+                width: 350px;
+                margin-top: rem(64);
+            }
+            @include sp {
+                margin-top: rem(56);
+                width: min(92%, 270px);
+            }
+
+            .link {
+                display: block;
+                padding-top: 0;
+                padding-bottom: 0;
+                p {
+                    line-height: 1;
+                }
+
+                &_text {
+                    line-height: 1;
+
+                    .wpcf7-submit,
+                    .wpcf7-previous {
+                        display: block!important;
+                        border: none;
+                        font-size: rem(18);
+                        line-height: 1;
+                        letter-spacing: .15em;
+                        padding-top: rem(23);
+                        padding-bottom: rem(23);
+                        @include sp {
+                        padding-top: rem(20);
+                        padding-bottom: rem(20);
+                        font-size: rem(16);
+                    }
+                }
+            
+                    .wpcf7-submit {
+                        color: inherit;
+                        &:hover {
+                            font-weight: 700;
+                            box-sizing: border-box;
+                            color: var(--co-gray-hv);
+                        }
+                        &:disabled {
+                            opacity: .7;
+                        }
+                    }
+                    
+                    .wpcf7-spinner {
+                        display: none;
+                    }
+                }
+    
+                &_image {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    pointer-events: none;
+                    @include sp {
+                        width: min(100%, 35px);
+                    }
+                
+                    &::before {
+                        content: "";
+                        width: 14px;
+                        height: 14px;
+                        mask-image: url(./images/common/icon-arw-dbl-rgt-blc.svg);
+                        position: absolute;
+                        top: 50%;
+                        left: 52%;
+                        transform: translateX(-50%) translateY(-50%);
+                        transition: background-color 0.4s ease; 
+                    }
+                }
+            }
+        }
+
+        .btn_shop-blc {
+            .link {
+                &_image {
+                    &::before {
+                        background-color: #333;
+                    }
+                }
+    
+                &:hover {
+                    .link_image {
+                        background-color: var(--co-gray-dr);
+                        &::before {
+                            background-color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+        
+        .wpcf7-response-output {
+            font-size: rem(16);
+            padding: .2em 1em;
+            margin-top: rem(40);
+        
+            @include sp {
+                margin-top: rem(24);
+            }
+        }
+
+        // 送信完了メッセージを消去
+        .wpcf7-form.sent .wpcf7-response-output {
+            display: none;
+          }
+    }
+
+
+
+    /*======================
+    確認画面
+    ======================*/
+    // .confirm {
+    //     table {
+    //         tr {                
+    //             th {
+    //                 @include tab-sp {
+    //                     padding-left: rem(16);
+    //                 }
+    //                 &::before {
+    //                     content: '';
+    //                 }
+    //             }
+    //         }
+
+    //          // プルダウンで矢印の消去
+    //          .category {
+    //             td {
+    //                 p {
+    //                     &::after {
+    //                       display: none;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     } 
+
+    //     //戻るボタン
+    //     .btn_shop-wht {
+    //         .link {
+    //             .wpcf7-previous {
+    //                 color: inherit;
+    //             }
+
+    //             &_image {
+    //                 right: auto;
+    //                 left: rem(16);
+
+    //                 &::before {
+    //                     left: 48%;
+    //                     background-color: #fff;
+    //                     transform: translateX(-50%) translateY(-50%) rotate(180deg);
+    //                 }
+    //             }
+
+    //             &:hover {
+    //                 .link_image {
+    //                     background-color: #fff;
+    //                     &::before {
+    //                         background-color: #333;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+    /*======================
+    完了画面
+    ======================*/
+    .complete {
+        .contact_text {
+            @include tab {
+                font-size: rem(16);
+            }
+            @include sp {
+                font-size: rem(14);
+            }
+        }
+
+        .btn_shop-wht {
+            width: min(100%, 365px);
+            @include clampVwPercent(margin-top, 112, 1440);
+            @include margin-center;
+            margin-left: auto;
+            @include tab {
+                margin-top: rem(80);
+                width: min(100%, 300px);
+            }
+            @include sp {
+                margin-top: rem(64);
+                width: min(100%, 235px);
+            }
+
+            .link {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+
+                &_text {
+                    line-height: 2.4;
+                }
+            }
+        }
+    }
+}

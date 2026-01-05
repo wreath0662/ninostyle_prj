@@ -1,0 +1,864 @@
+@use "sass:math";
+@use "../../basic/setting" as *;
+
+main.post,
+main.privacy-policy {
+    @include padding-basic();
+    padding-top: clampVw((150 * .7), 150, 150, 1440);
+    padding-bottom: clampVw((335 * .7), 335, 335, 1440);
+
+    @include tab {
+        padding-top: clampVw((96 * .7), 96, 96, 820);
+        padding-bottom: clampVw((240 * .7), 240, 240, 820);
+    }
+
+    @include sp {
+        @include clampVwRange(padding-top, 48, 375);
+        @include clampVwRange(padding-bottom, 120, 375);
+    }
+
+    .heading {
+        @include wpr(1400);
+    }
+
+    .blog {
+        padding-top: clampVw((156 * .7), 156, 156, 1440);
+
+        @include tab {
+            @include clampVwPercent(padding-top, 84, 820);
+        }
+
+        @include sp {
+            @include clampVwRange(padding-top, 52, 375);
+        }
+
+        .wrapper {
+            @include wpr(1400);
+        }
+
+        &_block {
+
+            &_unit {
+                position: relative;
+
+                .deco {
+                    position: absolute;
+                    z-index: -1;
+                    color: var(--co-gray-li);
+                    // font-weight: 700;
+
+                    @include pc {
+                        top: clampVw(-24, -24, -12, 1680);
+                        font-size: clampVw(76, 154, 154, 1680);
+                    }
+
+                    @include tab {
+                        top: clampVw(-10, -10, -6, 820);
+                        font-size: clampVw(56, 80, 80, 820);
+                    }
+
+                    @include sp {
+                        // top: clampVw(-10, -10, -6, 820);
+                        font-size: clampVw(36, 48, 48, 375);
+                    }
+                }
+
+                .time {
+                    font-weight: 500;
+                    letter-spacing: 0.1em;
+
+                    @include pc-tab {
+                        font-size: clampVw(16, 16, 18, 820);
+                    }
+
+                    @include sp {
+                        font-size: clampVw(12, 14, 14, 375);
+                    }
+                }
+
+                .title {
+                    font-weight: 700;
+                    letter-spacing: 0.15em;
+
+                    @include pc {
+                        @include clampVwPercent(margin-top, 20, 1680);
+                        @include clampVwPercent(font-size, 40, 1440);
+                    }
+
+                    @include tab {
+                        @include clampVwPercent(margin-top, 8, 820);
+                        @include clampVwRange(font-size, 32, 820);
+                    }
+
+                    @include pc-tab {
+                        line-height: 1.75;
+                    }
+
+                    @include sp {
+                        // @include clampVwPercent(margin-top, 4, 375);
+                        @include clampVwPercent(font-size, 24, 375);
+                        line-height: 1.5;
+                    }
+                }
+            }
+
+            &_image {
+                @include margin-center();
+
+                @include pc {
+                    width: min(pct(1000, 1400), rem(1000));
+                    @include clampVwPercent(margin-top, 110, 1680);
+                }
+
+                @include tab {
+                    width: min(pct(640, 724), rem(640));
+                    @include clampVwRange(margin-top, 56, 820);
+                }
+
+                @include sp {
+                    width: 90%;
+                    @include clampVwRange(margin-top, 36, 820);
+                }
+            }
+
+            &_contents {
+
+                &.include {
+                    @include pc {
+                        @include clampVwPercent(margin-top, 64, 1680);
+                    }
+
+                    @include tab {
+                        @include clampVwRange(margin-top, 48, 820);
+                    }
+
+                    @include sp {
+                        @include clampVwRange(margin-top, 32, 375);
+                    }
+                }
+
+                &:not(.include) {
+                    @include pc {
+                        @include clampVwPercent(margin-top, 110, 1680);
+                    }
+
+                    @include tab {
+                        @include clampVwRange(margin-top, 56, 820);
+                    }
+
+                    @include sp {
+                        @include clampVwRange(margin-top, 48, 375);
+                    }
+                }
+
+                & > *:first-child {
+                    margin-top: 0;
+                }
+
+                h1, h2, h3, h4, h5, h6 {
+                    font-weight: bold;
+                }
+
+                h2 {
+                    position: relative;
+                    border-bottom-style: solid;
+                    border-bottom-color: var(--co-gray-li);
+                    
+                    @include pc-tab {
+                        border-bottom-width: clampVw(4, 4, 6, 820);
+                        padding-bottom: clampVw(16, 20, 20, 820);
+                        font-size: clampVw(20, 24, 24, 820);
+                        line-height: 1.75;
+                    }
+
+                    @include sp {
+                        border-bottom-width: clampVw(2, 4, 4, 375);
+                        padding-bottom: clampVw(12, 14, 16, 375);
+                        font-size: clampVw(16, 18, 20, 375);
+                        line-height: 1.5;
+                    }
+
+                    &::after {
+                        position: absolute;
+                        left: 0;
+                        display: inline-block;
+                        background-color: var(--co-gray);
+                        content: "";
+
+                        @include pc {
+                            width: min(pct(52, 1400), rem(52));
+                        }
+
+                        @include tab {
+                            width: rem(48);
+                        }
+
+                        @include pc-tab {
+                            bottom: clampVw(-6, -4, -4, 820);
+                            height: clampVw(4, 4, 6, 820);
+                        }
+    
+                        @include sp {
+                            bottom: clampVw(-4, -4, -2, 375);
+                            width: rem(32);
+                            height: clampVw(2, 4, 4, 375);
+                        }    
+                    }
+
+                    & + h3 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 36, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 24, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+
+                    & + p {
+
+                        @include pc {
+                            @include clampVwPercent(margin-top, 60, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 32, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+
+                    & + figure {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 56, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 32, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 24, 375);
+                        }
+                    }
+                }
+
+                h3 {
+                    position: relative;
+
+                    @include pc-tab {
+                        border-bottom-width: rem(2);
+                        padding-bottom: clampVw(10, 14, 14, 820);
+                        font-size: clampVw(18, 22, 22, 820);
+                        line-height: 1.6;
+                    }
+
+                    @include sp {
+                        border-bottom-width: rem(1);
+                        padding-bottom: clampVw(6, 10, 10, 375);
+                        font-size: clampVw(14, 16, 18, 375);
+                        line-height: 1.4;
+                    }
+
+                    &::after {
+                        position: absolute;
+                        left: 0;
+                        display: inline-block;
+                        background-color: var(--co-gray);
+                        content: "";
+
+                        @include pc {
+                            width: min(pct(52, 1400), rem(52));
+                        }
+
+                        @include tab {
+                            width: rem(48);
+                        }
+
+                        @include pc-tab {
+                            bottom: clampVw(-6, -4, -4, 820);
+                            height: clampVw(4, 4, 6, 820);
+                        }
+    
+                        @include sp {
+                            bottom: clampVw(-4, -2, -2, 375);
+                            width: rem(32);
+                            height: clampVw(2, 4, 4, 375);
+                        }    
+                    }
+
+                    & + h4 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 40, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 24, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+
+                    & + p {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 28, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 18, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 16, 375);
+                        }
+                    }
+
+                    & + figure {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 48, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 28, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+                }
+
+                h4 {
+                    position: relative;
+                    border-left-style: solid;
+                    border-left-color: var(--co-gray);
+
+                    @include pc-tab {
+                        border-left-width: clampVw(4, 4, 6, 820);
+                        padding: rem(10) clampVw(12, 16, 16, 820);
+                        font-size: clampVw(16, 20, 20, 820);
+                        line-height: 1.5;
+                    }
+
+
+                    @include sp {
+                        border-left-width: rem(4);
+                        padding: rem(6) clampVw(10, 14, 14, 375);
+                        font-size: clampVw(14, 16, 18, 375);
+                        line-height: 1.35;
+                    }
+
+                    & + p {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 28, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 18, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 16, 375);
+                        }
+                    }
+
+                    & + figure {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 48, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 28, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+                }
+
+                p {
+
+                    font-weight: 500;
+
+                    @include pc-tab {
+                        font-size: clampVw(16, 16, 18, 820);
+                        line-height: 2.4;
+                    }
+
+                    @include sp {
+                        font-size: clampVw(12, 14, 14, 375);
+                        line-height: 1.75;
+                    }
+
+                    & + h2 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 130, 1440);
+                        }
+
+                        @include tab {
+                            margin-top: clampVw(48, 56, 56, 820);
+                        }
+
+                        @include sp {
+                            margin-top: clampVw(32, 40, 48, 375);
+                        }
+                    }
+
+                    & + h3 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 130, 1440);
+                        }
+
+                        @include tab {
+                            margin-top: clampVw(48, 56, 56, 820);
+                        }
+
+                        @include sp {
+                            margin-top: clampVw(32, 40, 48, 375);
+                        }
+                    }
+
+                    & + h4 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 40, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 24, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+
+                    & + p {
+                        @include pc-tab {
+                            margin-top: clampVw(16, 16, 18, 820);
+                        }
+
+                        @include sp {
+                            margin-top: clampVw(14, 14, 16, 375);
+                        }
+                    }
+
+                    & + figure {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 32, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 20, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 14, 375);
+                        }
+                    }
+                }
+
+                ul,
+                ol {
+
+                    li {
+                        // position: relative
+                        font-weight: 600;
+
+                        @include pc-tab {
+                            font-size: clampVw(16, 16, 18, 820);
+                            line-height: 2.4;
+                        }
+    
+                        @include sp {
+                            font-size: clampVw(12, 14, 14, 375);
+                            line-height: 1.75;
+                        }
+
+                        &::before {
+                            display: inline-block;
+                        }
+                    }
+
+                    & + p {
+                        
+                        @include pc-tab {
+                            margin-top: clampVw(14, 20, 20, 820);
+                        }
+
+                        @include sp {
+                            margin-top: rem(14);
+                        }
+                    }
+                    
+                    & + h2 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 130, 1440);
+                        }
+
+                        @include tab {
+                            margin-top: clampVw(48, 56, 56, 820);
+                        }
+
+                        @include sp {
+                            margin-top: clampVw(32, 40, 48, 375);
+                        }
+                    }
+
+                    & + h3 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 36, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 24, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+
+                    & + h4 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 40, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 24, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+                }
+
+                ul {
+
+                    &:not( li > ul ) {
+                        border-color: var(--co-gray-dr-th);
+                        border-width: rem(2);
+                        border-style: solid;
+                        
+                        @include pc-tab {
+                            margin-top: clampVw(24, 32, 40, 820);
+                            padding: rem(16) clampVw(20, 20, 24, 820);
+                        }
+
+                        @include sp {
+                            margin-top: rem(20);
+                            padding: rem(16) clampVw(16, 16, 20, 375);
+                        } 
+                    }
+
+                    li {
+
+                        &:not( ol > li ) {
+                            padding-left: 1em;
+                            text-indent: -1em;
+                            
+                            &::before {
+                                background-color: var(--co-gray-dr);
+                                aspect-ratio: 1/1;
+                                border-radius: rem(8);
+                                content: "";
+    
+                                @include pc-tab {
+                                    width: clampVw(6, 8, 8, 820);
+                                    margin-right: rem(10);
+                                    margin-bottom: rem(2);
+                                }
+
+                                @include sp {
+                                    width: clampVw(6, 8, 8, 820);
+                                    margin-right: rem(8);
+                                    margin-bottom: rem(2);
+                                }
+                            }
+                        }
+
+                        ul, ol {
+                            @include pc-tab {
+                                padding: rem(16);
+                            }
+
+                            @include sp {
+                                padding: rem(12) clampVw(16, 16, 20, 375);
+                            }
+                        }
+                    }
+                }
+
+                ol {
+                    counter-reset: number 0;
+
+                    // @include sp {
+                    //     margin-top: rem(20);
+                    // } 
+
+                    &:not( li > ol ) {
+                        border-color: var(--co-gray-dr-th);
+                        border-width: rem(2);
+                        border-style: solid;
+
+                        @include pc-tab {
+                            margin-top: clampVw(24, 32, 40, 820);
+                            padding: rem(16) clampVw(20, 20, 24, 820) rem(16) clampVw(24, 24, 32, 820);
+                        }
+
+                        @include sp {
+                            margin-top: rem(20);
+                            padding: rem(16) clampVw(16, 16, 20, 375) rem(16) clampVw(28, 34, 34, 375);
+                        } 
+                    }
+
+                    li {
+                        
+                        @include pc-tab {
+                            padding-left: .8em;
+                            text-indent: -.6em;
+                        }
+
+                        @include sp {
+                            text-indent: rem(-9);
+                        }
+                        
+                        &::before {
+                            display: inline-block;
+                            counter-increment: number 1;
+                            content: counter(number)".";
+                            margin-right: rem(6);
+
+                            // @include pc-tab {
+                            //     // width: clampVw(6, 8, 8, 820);
+                            //     margin-right: rem(6);
+                            //     // margin-bottom: rem(2);
+                            // }
+
+                            // @include sp {
+                            // }
+                        }
+
+                        ol {
+                            
+                            @include pc-tab {
+                                padding: rem(16) clampVw(20, 20, 24, 820);
+                            }
+
+                            @include sp {
+                                padding: rem(12) clampVw(16, 16, 20, 375);
+                            }
+                        }
+
+                        ul {
+                            @include pc-tab {
+                                padding-top: rem(16);
+                                padding-bottom: rem(16);
+                            }
+
+                            @include sp {
+                                padding-top: rem(12);
+                                padding-bottom: rem(12);
+                            }
+                        }
+                    }
+                }
+
+                blockquote {
+                    background-color: var(--co-gray-li);
+
+                    @include pc-tab {
+                        margin-top: clampVw(24, 32, 40, 820);
+                        padding: rem(16) clampVw(20, 20, 24, 820);
+                    }
+
+                    @include sp {
+                        margin-top: clampVw(18, 24, 24, 375);
+                        padding: rem(12) clampVw(16, 16, 20, 375);
+                    }
+
+                    cite {
+                        display: block;
+                        font-style: italic;
+                        font-weight: 600;
+                        
+                        @include pc-tab {
+                            margin-top: clampVw(24, 32, 32, 820);
+                            font-size: clampVw(16, 16, 18, 820);
+                            line-height: 2.4;
+                        }
+    
+                        @include sp {
+                            margin-top: clampVw(20, 20, 24, 375);
+                            font-size: clampVw(12, 14, 14, 375);
+                            line-height: 1.75;
+                        }
+                    }
+
+                    & + p {
+                        
+                        @include pc-tab {
+                            margin-top: clampVw(14, 20, 20, 820);
+                        }
+
+                        @include sp {
+                            margin-top: rem(14);
+                        }
+                    }
+                    
+                    & + h2 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 130, 1440);
+                        }
+
+                        @include tab {
+                            margin-top: clampVw(48, 56, 56, 820);
+                        }
+
+                        @include sp {
+                            margin-top: clampVw(32, 40, 48, 375);
+                        }
+                    }
+
+                    & + h3 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 36, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 24, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+
+                    & + h4 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 40, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 24, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+                }
+
+                figure {
+                    @include margin-center();
+
+                    @include pc {
+                        width: min(pct(800, 1400), rem(800));
+                    }
+
+                    @include tab {
+                        width: min(pct(560, 724), rem(560));
+                    }
+
+                    @include sp {
+                        width: 90%;
+                    }
+
+                    & + h2 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 96, 1440);
+                        }
+
+                        @include tab {
+                            margin-top: clampVw(40, 48, 48, 820);
+                        }
+
+                        @include sp {
+                            margin-top: clampVw(28, 32, 40, 375);
+                        }
+                    }
+
+                    & + h3 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 36, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 24, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+
+                    & + h4 {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 40, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 24, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 20, 375);
+                        }
+                    }
+
+                    & + p {
+                        @include pc {
+                            @include clampVwPercent(margin-top, 40, 1440);
+                        }
+
+                        @include tab {
+                            @include clampVwRange(margin-top, 24, 820);
+                        }
+
+                        @include sp {
+                            @include clampVwRange(margin-top, 18, 375);
+                        }
+                    }
+                }
+
+                .btn_shop-blc {
+
+                    @include pc {
+                        @include clampVwPercent(margin-top, 64, 1440);
+                    }
+
+                    @include tab {
+                        @include clampVwRange(margin-top, 36, 820);
+                    }
+
+                    @include sp {
+                        @include clampVwRange(margin-top, 24, 375);
+                    }
+                }
+            }
+        }
+    }
+}
+
+main.privacy-policy  {
+    .blog {
+        padding-top: 0;
+
+        @include tab {
+            padding-top: 0;
+        }
+
+        @include sp {
+            padding-top: 0;
+        }
+    }
+}

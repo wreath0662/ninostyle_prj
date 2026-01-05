@@ -1,0 +1,34 @@
+@use "sass:math";
+@use "../../basic/setting" as *;
+
+.breadcrumbs {
+
+    padding-top: clampVw(4, 6, 6, 1024);
+    padding-right: pct(96, 1920);
+    padding-bottom: clampVw(4, 6, 6, 1024);
+    padding-left: pct(96, 1920);
+    border-top: rem(1) solid var(--co-gray-li-dr);
+    line-height: 1.5;
+
+    .wrapper {
+        text-align: right;
+
+        @include pc {
+            max-width: rem(1604);
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        span {
+            font-size: clampVw(14, 16, 16, 1440);
+        }
+
+        a {
+            transition: var(--trs-opc);
+
+            &:hover {
+                opacity: .4;
+            }
+        }
+    }
+}

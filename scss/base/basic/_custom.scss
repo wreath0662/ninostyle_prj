@@ -1,0 +1,79 @@
+@use "../lib/reset";
+@use "setting" as *;
+
+* {
+    box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  min-height: -webkit-fill-available;
+}
+
+body {
+  font-family: var(--fo-zom);
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  overflow-y: scroll;
+
+  &.ofh {
+    overflow: hidden;
+  }
+}
+
+// h2, h3, h4, h5, p, address, li, a {
+//   // font-family: var(--fo-zkgn);
+// }
+
+p {
+  font-weight: 400;
+  
+  @include pc-tab {
+    font-size: clampVw(16, 18, 18, 820);
+    line-height: 2.5;
+  }
+
+  @include sp {
+    font-size: clampVw(14, 14, 16, 375);
+    line-height: 1.8;
+  }
+}
+
+picture {
+  display: block;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+address {
+  font-style: normal;
+}
+
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: var(--wp--preset--color--black);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input,
+button,
+select,
+textarea {
+  appearance: none;
+}
