@@ -2,7 +2,7 @@
 /*
 Template Name: ABOUT
 */
-if ( !defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 $co_path = 'images/common/';
 $co_jpg_path = 'images/common/jpg/';
 $co_png_path = 'images/common/png/';
@@ -19,67 +19,67 @@ $page_svg_path = 'images/page/svg/';
         <h1 class="heading_main" data-head="ABOUT">ニノミヤ家具について</h1>
       </div>
       <?php
-                $about_content = [
-                    [
-                        'title' => 'ハンドメイド',
-                        'title-en' => 'HAND MADE',
-                        'text' => ' すべて天然の無垢材を使用しております。<br>
+      $about_content = [
+        [
+          'title' => 'ハンドメイド',
+          'title-en' => 'HAND MADE',
+          'text' => ' すべて天然の無垢材を使用しております。<br>
                                     無垢材にはひとつとして同じ物がない自然な木目や既製品や工業製品ではだせない、<br>
                                     「木」本来の質感や温もりがあります。<br>
                                     また、節や欠け、そりなど、ひとつひとつに違った個性を持っています。<br>
                                     塗料も木目により独特なムラが出ます。<br>
                                     それらを、組み合わせることで、同じデザインの家具でも世界でひとつだけの物になり<br>
                                     味わい深い家具になります。',
-                        'src-pc-times' => 'img-about01_pc@2x.jpg',
-                        'src-pc' => 'img-about01_pc.jpg',
-                        'src-sp-times' => 'img-about01_sp@2x.jpg',
-                        'src-sp' => 'img-about01_sp.jpg',
-                        'alt' => 'ハンドメイド',
-                    ],
-                    [
-                        'title' => 'こだわり',
-                        'title-en' => 'COMMITMENT',
-                        'text' => ' ニノミヤ家具製作所の家具はご注文をいただいてから、家具職人の手によって手間暇かけて丁寧に製作しております。家具がひとつできあがるまでには、数えきれないほどたくさんの工程があります。<br>
+          'src-pc-times' => 'img-about01_pc@2x.jpg',
+          'src-pc' => 'img-about01_pc.jpg',
+          'src-sp-times' => 'img-about01_sp@2x.jpg',
+          'src-sp' => 'img-about01_sp.jpg',
+          'alt' => 'ハンドメイド',
+        ],
+        [
+          'title' => 'こだわり',
+          'title-en' => 'COMMITMENT',
+          'text' => ' ニノミヤ家具製作所の家具はご注文をいただいてから、家具職人の手によって手間暇かけて丁寧に製作しております。家具がひとつできあがるまでには、数えきれないほどたくさんの工程があります。<br>
                                     切磋琢磨して磨き上げた技術を持った家具職人だからこそ、難しいデザインでも形になります。素材の良さを存分に引き出すのが家具職人としての誇りです。<br>
                                     木の個性や形状に合わせて、いくつもの道具を巧みに使いこなします。',
-                        'src-pc-times' => 'img-about02_pc@2x.jpg',
-                        'src-pc' => 'img-about02_pc.jpg',
-                        'src-sp-times' => 'img-about02_sp@2x.jpg',
-                        'src-sp' => 'img-about02_sp.jpg',
-                        'alt' => 'こだわり',
-                    ],
-                    [
-                        'title' => '無垢材',
-                        'title-en' => 'SOLID WOOD',
-                        'text' => ' 自然で美しい木目と個性豊かな節を楽しむ。<br>
+          'src-pc-times' => 'img-about02_pc@2x.jpg',
+          'src-pc' => 'img-about02_pc.jpg',
+          'src-sp-times' => 'img-about02_sp@2x.jpg',
+          'src-sp' => 'img-about02_sp.jpg',
+          'alt' => 'こだわり',
+        ],
+        [
+          'title' => '無垢材',
+          'title-en' => 'SOLID WOOD',
+          'text' => ' 自然で美しい木目と個性豊かな節を楽しむ。<br>
                                     心を込めた手作業による世界にひとつだけの家具。<br>
                                     それは優しい風合いとぬくもりを感じさせてくれます。<br>
                                     経年変化――使えば使うほど木肌が滑らかになり、自然な艶が生まれ、色合いも深くなります。<br>
                                     同じ木はひとつもなく、月日とともにそれぞれ独自の色合いに変化し、あなたに馴染んでいき、世界にひとつの家具になっていきます。',
-                        'src-pc-times' => 'img-about03_pc@2x.jpg',
-                        'src-pc' => 'img-about03_pc.jpg',
-                        'src-sp-times' => 'img-about03_sp@2x.jpg',
-                        'src-sp' => 'img-about03_sp.jpg',
-                        'alt' => 'こだわり',
-                    ],
+          'src-pc-times' => 'img-about03_pc@2x.jpg',
+          'src-pc' => 'img-about03_pc.jpg',
+          'src-sp-times' => 'img-about03_sp@2x.jpg',
+          'src-sp' => 'img-about03_sp.jpg',
+          'alt' => 'こだわり',
+        ],
 
-                ];
-                foreach ( $about_content as $item ) {
-            ?>
-      <article class="about_inner_content fade-in">
-        <div class="about_inner_content_image">
-          <picture class="image">
-            <source media="(max-width: 600px)" srcset="<?= get_theme_file_uri($page_jpg_path.$item['src-sp']);?> 1x, <?= get_theme_file_uri($page_jpg_path.$item['src-sp-times']);?> 2x">
-            <source media="(min-width: 601px)" srcset="<?= get_theme_file_uri($page_jpg_path.$item['src-pc']);?> 1x, <?= get_theme_file_uri($page_jpg_path.$item['src-pc-times']);?> 2x">
-            <img src="<?= get_theme_file_uri($page_jpg_path.$item['src-pc']);?>" alt="<?= esc_attr($item['alt']); ?>">
-          </picture>
-          <div class="lead">
-            <p class="lead_title-en"><?= esc_html($item['title-en']); ?></p>
-            <p class="lead_title-jp"><?= esc_html($item['title']); ?></p>
+      ];
+      foreach ($about_content as $item) {
+      ?>
+        <article class="about_inner_content fade-in">
+          <div class="about_inner_content_image">
+            <picture class="image">
+              <source media="(max-width: 600px)" srcset="<?= get_theme_file_uri($page_jpg_path . $item['src-sp']); ?> 1x, <?= get_theme_file_uri($page_jpg_path . $item['src-sp-times']); ?> 2x">
+              <source media="(min-width: 601px)" srcset="<?= get_theme_file_uri($page_jpg_path . $item['src-pc']); ?> 1x, <?= get_theme_file_uri($page_jpg_path . $item['src-pc-times']); ?> 2x">
+              <img src="<?= get_theme_file_uri($page_jpg_path . $item['src-pc']); ?>" alt="<?= esc_attr($item['alt']); ?>">
+            </picture>
+            <div class="lead">
+              <p class="lead_title-en"><?= esc_html($item['title-en']); ?></p>
+              <p class="lead_title-jp"><?= esc_html($item['title']); ?></p>
+            </div>
           </div>
-        </div>
-        <p class="about_inner_content_text"><?= wp_kses_post($item['text']); ?></p>
-      </article>
+          <p class="about_inner_content_text"><?= wp_kses_post($item['text']); ?></p>
+        </article>
       <?php } ?>
     </div>
   </section>
@@ -101,9 +101,9 @@ $page_svg_path = 'images/page/svg/';
       <!-- 1ページ目 -->
       <article class="package_inner active page1">
         <picture class="package_inner_image">
-          <source media="(max-width: 1024px)" srcset="<?= get_theme_file_uri($page_jpg_path.'img-about04_sp.jpg');?> 1x, <?= get_theme_file_uri($page_jpg_path.'img-about04_sp@2x.jpg');?> 2x">
-          <source media="(min-width: 1025px)" srcset="<?= get_theme_file_uri($page_jpg_path.'img-about04_pc.jpg');?> 1x, <?= get_theme_file_uri($page_jpg_path.'img-about04_pc@2x.jpg');?> 2x">
-          <img src="<?= get_theme_file_uri($page_jpg_path.'img-about04_pc.jpg');?>" alt="浜辺">
+          <source media="(max-width: 1024px)" srcset="<?= get_theme_file_uri($page_jpg_path . 'img-about04_sp.jpg'); ?> 1x, <?= get_theme_file_uri($page_jpg_path . 'img-about04_sp@2x.jpg'); ?> 2x">
+          <source media="(min-width: 1025px)" srcset="<?= get_theme_file_uri($page_jpg_path . 'img-about04_pc.jpg'); ?> 1x, <?= get_theme_file_uri($page_jpg_path . 'img-about04_pc@2x.jpg'); ?> 2x">
+          <img src="<?= get_theme_file_uri($page_jpg_path . 'img-about04_pc.jpg'); ?>" alt="浜辺">
         </picture>
         <div class="package_inner_content">
           <h2 class="package_inner_content_number">第一章</h2>
@@ -127,7 +127,7 @@ $page_svg_path = 'images/page/svg/';
             <a class="link">
               <span class="link_text">NEXT</span>
               <span class="link_image">
-                <img src="<?= esc_url(get_theme_file_uri($co_path .'icon-arw-dbl-rgt-blc.svg')); ?>" alt="右向き矢印">
+                <img src="<?= esc_url(get_theme_file_uri($co_path . 'icon-arw-dbl-rgt-blc.svg')); ?>" alt="右向き矢印">
               </span>
             </a>
           </div>
@@ -136,9 +136,9 @@ $page_svg_path = 'images/page/svg/';
       <!-- 2ページ目 -->
       <article class="package_inner page2">
         <picture class="package_inner_image">
-          <source media="(max-width: 1024px)" srcset="<?= get_theme_file_uri($page_jpg_path.'img-about05_sp.jpg');?> 1x, <?= get_theme_file_uri($page_jpg_path.'img-about05_sp@2x.jpg');?> 2x">
-          <source media="(min-width: 1025px)" srcset="<?= get_theme_file_uri($page_jpg_path.'img-about05_pc.jpg');?> 1x, <?= get_theme_file_uri($page_jpg_path.'img-about05_pc@2x.jpg');?> 2x">
-          <img src="<?= get_theme_file_uri($page_jpg_path.'img-about04_pc.jpg');?>" alt="職人">
+          <source media="(max-width: 1024px)" srcset="<?= get_theme_file_uri($page_jpg_path . 'img-about05_sp.jpg'); ?> 1x, <?= get_theme_file_uri($page_jpg_path . 'img-about05_sp@2x.jpg'); ?> 2x">
+          <source media="(min-width: 1025px)" srcset="<?= get_theme_file_uri($page_jpg_path . 'img-about05_pc.jpg'); ?> 1x, <?= get_theme_file_uri($page_jpg_path . 'img-about05_pc@2x.jpg'); ?> 2x">
+          <img src="<?= get_theme_file_uri($page_jpg_path . 'img-about04_pc.jpg'); ?>" alt="職人">
         </picture>
         <div class="package_inner_content">
           <h2 class="package_inner_content_number">第二章</h2>
@@ -164,7 +164,7 @@ $page_svg_path = 'images/page/svg/';
               <a class="link">
                 <span class="link_text">BACK</span>
                 <span class="link_image">
-                  <img src="<?= esc_url(get_theme_file_uri($co_path .'icon-arw-dbl-rgt-blc.svg')); ?>" alt="右向き矢印">
+                  <img src="<?= esc_url(get_theme_file_uri($co_path . 'icon-arw-dbl-rgt-blc.svg')); ?>" alt="右向き矢印">
                 </span>
               </a>
             </div>
@@ -172,7 +172,7 @@ $page_svg_path = 'images/page/svg/';
               <a class="link">
                 <span class="link_text">NEXT</span>
                 <span class="link_image">
-                  <img src="<?= esc_url(get_theme_file_uri($co_path .'icon-arw-dbl-rgt-blc.svg')); ?>" alt="右向き矢印">
+                  <img src="<?= esc_url(get_theme_file_uri($co_path . 'icon-arw-dbl-rgt-blc.svg')); ?>" alt="右向き矢印">
                 </span>
               </a>
             </div>
@@ -182,9 +182,9 @@ $page_svg_path = 'images/page/svg/';
       <!-- 3ページ目 -->
       <article class="package_inner page3">
         <picture class="package_inner_image">
-          <source media="(max-width: 1024px)" srcset="<?= get_theme_file_uri($page_jpg_path.'img-about06_sp.jpg');?> 1x, <?= get_theme_file_uri($page_jpg_path.'img-about06_sp@2x.jpg');?> 2x">
-          <source media="(min-width: 1025px)" srcset="<?= get_theme_file_uri($page_jpg_path.'img-about06_pc.jpg');?> 1x, <?= get_theme_file_uri($page_jpg_path.'img-about06_pc@2x.jpg');?> 2x">
-          <img src="<?= get_theme_file_uri($page_jpg_path.'img-about04_pc.jpg');?>" alt="職人">
+          <source media="(max-width: 1024px)" srcset="<?= get_theme_file_uri($page_jpg_path . 'img-about06_sp.jpg'); ?> 1x, <?= get_theme_file_uri($page_jpg_path . 'img-about06_sp@2x.jpg'); ?> 2x">
+          <source media="(min-width: 1025px)" srcset="<?= get_theme_file_uri($page_jpg_path . 'img-about06_pc.jpg'); ?> 1x, <?= get_theme_file_uri($page_jpg_path . 'img-about06_pc@2x.jpg'); ?> 2x">
+          <img src="<?= get_theme_file_uri($page_jpg_path . 'img-about04_pc.jpg'); ?>" alt="職人">
         </picture>
         <div class="package_inner_content">
           <h2 class="package_inner_content_number">第三章</h2>
@@ -206,7 +206,7 @@ $page_svg_path = 'images/page/svg/';
             <a class="link">
               <span class="link_text">BACK</span>
               <span class="link_image">
-                <img src="<?= esc_url(get_theme_file_uri($co_path .'icon-arw-dbl-rgt-blc.svg')); ?>" alt="右向き矢印">
+                <img src="<?= esc_url(get_theme_file_uri($co_path . 'icon-arw-dbl-rgt-blc.svg')); ?>" alt="右向き矢印">
               </span>
             </a>
           </div>
